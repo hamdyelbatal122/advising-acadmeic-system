@@ -8,7 +8,7 @@
             <h1 class="section-page-title">About  University</h1>
             <div class="about-content mt-0">
                <h2 class="section-title"> CIS University</h2>
-               <p><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;"=""> CIS University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;</span><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;="" background-color:="" rgb(248,="" 247,="" 246);"=""> NIK  University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;</span></p>
+               <p><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;"=""> Welcome to CIS University, a pioneering hub for technology and computer education nestled in the heart of New Cairo. At CIS, we ignite innovation, empower creativity, and shape the future of technology through cutting-edge programs and immersive learning experiences. Our dynamic campus fosters collaboration, fosters collaboration, and inspires excellence, empowering students to become the tech leaders of tomorrow.&nbsp;</span></p>
             </div>
          </div>
          <div class="col-12 col-lg-6">
