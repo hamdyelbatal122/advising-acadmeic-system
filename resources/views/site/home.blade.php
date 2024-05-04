@@ -1,5 +1,5 @@
 @extends('site.layouts.main')
-@section('title', 'Home')
+@section('title', env('APP_NAME') . ' | Home')
 @section('content')
 
 <section class="banner-carousel owl-carousel">
@@ -9,21 +9,25 @@
           <div class="container">
              <div class="banner-group">
                 <div class="banner-content">
-                   <span>a tradition since 1999</span>
-                   <h1>Offering Bright Futures</h1>
-                   <p>CIS University gradutes are styding in the world&rsquo;s most prestigious universities.</p>
-                   <a href=""
+                   <span>Legacy of Excellence</span>
+                   <h1>Empowering Tomorrow's Leaders</h1>
+                   <p> 
+                     Through cutting-edge academic programs, we shape bright futures, fostering innovation and excellence in our vibrant university community.
+                   </p>
+
+                   <a href="#"
                       class="btn btn-inline">apply now</a>
                 </div>
                 <div class="banner-media">
                    <a class="banner--media-video" target="_blank" data-autoplay="true"
                       data-vbtype="video"
-                      href=""><i
+                      href="#"><i
                       class="fa-solid fa-play"></i></a>
                    <div class="banner-media-content">
                       <span>CIS University</span>
-                      <h3>campus tour</h3>
+                      <h3>Interactive Campus Exploration</h3>
                       <p>Watch Video</p>
+
                    </div>
                 </div>
              </div>
@@ -36,21 +40,22 @@
           <div class="container">
              <div class="banner-group">
                 <div class="banner-content">
-                   <span>a tradition since 1999</span>
-                   <h1>Offering Bright Futures For You</h1>
-                   <p>CIS University gradutes are styding in the world&rsquo;s most prestigious universities.</p>
-                   <a href=""
+                   <span>Community Bonds</span>
+                   <h1>Innovative Education, Bright Futures</h1>
+                   <p>At our university, we offer groundbreaking academic programs, guiding students towards success and transformative learning experiences.</p>
+                   <a href="#"
                       class="btn btn-inline">apply now</a>
                 </div>
                 <div class="banner-media">
                    <a class="banner--media-video" target="_blank" data-autoplay="true"
                       data-vbtype="video"
-                      href=""><i
+                      href="#"><i
                       class="fa-solid fa-play"></i></a>
                    <div class="banner-media-content">
                       <span>CIS University</span>
-                      <h3>campus tour</h3>
+                      <h3>Personalized Guided Tours</h3>
                       <p>Watch Video</p>
+
                    </div>
                 </div>
              </div>
@@ -63,20 +68,20 @@
           <div class="container">
              <div class="banner-group">
                 <div class="banner-content">
-                   <span>a tradition since 1999</span>
-                   <h1>Offering Bright Futures For You</h1>
-                   <p>CIS University gradutes are styding in the world&rsquo;s most prestigious universities.</p>
-                   <a href=""
+                   <span>Spirit of Innovation</span>
+                   <h1>Shaping Bright Futures Through Innovation</h1>
+                   <p>Explore our university's dynamic environment, where innovative academic programs inspire excellence, shaping promising futures for all students.</p>
+                   <a href="#"
                       class="btn btn-inline">apply now</a>
                 </div>
                 <div class="banner-media">
                    <a class="banner--media-video" target="_blank" data-autoplay="true"
                       data-vbtype="video"
-                      href=""><i
+                      href="#"><i
                       class="fa-solid fa-play"></i></a>
                    <div class="banner-media-content">
                       <span>CIS University</span>
-                      <h3>campus tour</h3>
+                      <h3>Virtual Campus Discovery</h3>
                       <p>Watch Video</p>
                    </div>
                 </div>
@@ -88,19 +93,19 @@
  <section class="feature-part">
     <div class="feature-card">
        <i class="lab-line-education"></i>
-       <p>Education in English: Cambridge International Programmed and qualified native English's speaking teachers.</p>
+       <p>Our institution offers Cambridge International Programs led by qualified, native English-speaking educators, ensuring top-tier language learning experiences.</p>
     </div>
     <div class="feature-card">
        <i class="lab-line-book"></i>
-       <p>Education in English: Cambridge International Programmed and qualified native English's speaking teachers.</p>
+       <p> Experience education in English with our Cambridge International Programs, facilitated by certified English-speaking instructors for unparalleled language mastery.</p>
     </div>
     <div class="feature-card">
        <i class="lab-line-notebook"></i>
-       <p>Education in English: Cambridge International Programmed and qualified native English's speaking teachers.</p>
+       <p>Engage with our Cambridge International Programs taught by native English speakers, fostering fluency and proficiency in an immersive learning environment.</p>
     </div>
     <div class="feature-card">
        <i class="lab-line-certificate"></i>
-       <p>Education in English: Cambridge International Programmed and qualified native English's speaking teachers.</p>
+       <p>Immerse yourself in our Cambridge International Programs, guided by proficient, native English-speaking educators dedicated to your language mastery and academic success.</p>
     </div>
  </section>
  <section class="about-part">
@@ -110,9 +115,9 @@
              <div class="about-content">
                 <h2 class="section-title">About University</h2>
                 <p>
-                   CIS University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;                                ...                            
+                  CIS University stands as a beacon of academic excellence, fostering innovation and empowering students to thrive in a dynamic global landscape. Join us in shaping tomorrow's leaders through transformative education and impactful learning experiences &nbsp;                                ...                            
                 </p>
-                <a href="" class="btn btn-outline">learn more</a>
+                <a href="{{route('site.abou')}}" class="btn btn-outline">learn more</a>
              </div>
           </div>
           <div class="col-12 col-md-6 col-lg-7">
@@ -185,7 +190,7 @@
                    href="#">Sports day</a>
                 </h4>
                 <h5>31 Dec, 2022-31 Dec, 2022                                    </h5>
-                <p>The 11th Annual State Championship is a school-only tournament featuring qualified squads from all c...                                    </p>
+                <p>The 31 Annual State Championship showcases university-exclusive teams, gathering qualified squads from across...                                </p>
                 <a class="view" href="#">
                 <span>View Event</span>
                 <i class="lni lni-arrow-right"></i>
@@ -199,10 +204,10 @@
              </a>
              <div class="event-content">
                 <h4><a
-                   href="#">School Meeting</a>
+                   href="#">University Meeting</a>
                 </h4>
                 <h5>31 Dec, 2022-31 Dec, 2022                                    </h5>
-                <p>The 11th Annual State Championship is a school-only tournament featuring qualified squads from all c...                                    </p>
+                <p>The 11th Annual State Championship is a University-only tournament featuring qualified squads from all c...                                    </p>
                 <a class="view" href="#">
                 <span>View Event</span>
                 <i class="lni lni-arrow-right"></i>
@@ -218,15 +223,15 @@
        <h2>The University Community</h2>
        <p>Share your University pride with the world!</p>
        <nav>
-          <a target="_blank" href="https://www.facebook.com/f"
+          <a target="_blank" href="https://www.facebook.com/CIS.EDU1"
              class="lab-fill-facebook-round"></a>
-          <a target="_blank" href="https://twitter.com/inilabsn"
+          <a target="_blank" href="#"
              class="lab-fill-twitter-round"></a>
-          <a target="_blank" href="https://www.linkedin.com/company/14437981"
+          <a target="_blank" href="#"
              class="lab-fill-linkedin-round"></a>
-          <a target="_blank" href="https://www.youtube.com/channel/UCB6xSPlOlec16f-v6pnI_gw"
+          <a target="_blank" href="https://www.youtube.com/@CIS.EDU1"
              class="lab-fill-youtube-round"></a>
-          <a target="_blank" href="https://googleplus.com"
+          <a target="_blank" href="#"
              class="lab-fill-google-plus-round"></a>
        </nav>
     </div>

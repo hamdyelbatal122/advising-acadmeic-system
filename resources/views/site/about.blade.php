@@ -1,5 +1,5 @@
 @extends('site.layouts.main')
-@section('title', 'about')
+@section('title', 'About')
 @section('content')
 <section class="about-part">
    <div class="container">
@@ -7,8 +7,8 @@
          <div class="col-12 col-lg-6">
             <h1 class="section-page-title">About  University</h1>
             <div class="about-content mt-0">
-               <h2 class="section-title"> NIK  University</h2>
-               <p><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;"=""> NIK  University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;</span><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;="" background-color:="" rgb(248,="" 247,="" 246);"=""> NIK  University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;</span></p>
+               <h2 class="section-title"> CIS University</h2>
+               <p><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;"=""> CIS University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;</span><span style="color: rgb(12, 16, 40); font-family: " open="" sans",="" sans-serif;="" font-size:="" 18px;="" background-color:="" rgb(248,="" 247,="" 246);"=""> NIK  University is an independent, non-governmental organisation, established to provide high-quality education to local and expatriate communities in Bangladesh and United State of America.&nbsp;</span></p>
             </div>
          </div>
          <div class="col-12 col-lg-6">
@@ -27,11 +27,13 @@
             <div class="row row-cols-1 row-cols-md-3">
                <div class="col">
                   <h3>Origin</h3>
-                  <p> NIK  University is a fully accredited, independent, international  University in Dhaka, Bangladesh. Serving families from Dhaka’s local and international communities, we successfully deliver a rigorous  NIK curriculum program for students from Early Childhoo</p>
+                  <p>
+                     CIS, short for Cairo International University, is a prominent educational institution located in Egypt. Renowned for its commitment to academic excellence and holistic development, CIS offers a diverse range of educational programs catering to students from various cultural backgrounds </p>
                </div>
                <div class="col">
                   <h3>Campus</h3>
-                  <p> NIK  University is a fully accredited, independent, international  University in Dhaka, Bangladesh. Serving families from Dhaka’s local and international communities, we successfully deliver a rigorous  NIK curriculum program for students from Early Childhoo</p>
+                  <p> 
+                     The campus of CIS university is a vibrant and modern space designed to foster a conducive learning environment. With its lush greenery, well-equipped facilities, and innovative learning spaces, the campus offers students a dynamic and engaging educational experience.</p>
                </div>
                <div class="col">
                   <h3>Success</h3>
@@ -42,14 +44,29 @@
       </div>
    </div>
 </section>
+
 <section class="vision-part">
    <div class="container">
       <div class="vision-content">
          <h2 class="section-title">Our Vision</h2>
-         <p>Our mission is to empower students to fulfil their potential as responsible, innovative, and open-minded global citizens through the development of high-quality academic skills and social competencies.</p>
+         <p>
+            Our university aspires to be a leading research educational institution in the field of computerization and community development and to exceed the global quality standards.
+         </p>
+      </div>
+   </div>
+   <div class="container">
+      <div class="vision-content">
+         <h2 class="section-title">Our Mission</h2>
+         <p>
+            The mission of CIS  University is to serve the students as well as the community through the provision of distinctive education and innovative research in the fields of computer science, information systems and technology, and multimedia. This faculty develops the students’ personalities to make them able to build a knowledge-based economy and to create an innovative, competitive, and self-learning work environment. Computers and Information graduates are able to compete locally, regionally, and internationally in the labor market and to interact creatively with society and entrepreneurs.
+         </p>
       </div>
    </div>
 </section>
+
+
+
+
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/css/about.css')}}">
