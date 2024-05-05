@@ -18,10 +18,10 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null) : Response
     {
   
-        if (!auth()->check() && $request->route()->named('student.*')){
+        if ($request->route()->named('student.*') && !Auth::guard('student')->check()) {
             // User is not authenticated, redirect to login page
             return redirect()->route('student.login');
-        } elseif (!auth()->check() && $request->route()->named('admin.*')){
+        } elseif ($request->route()->named('admin.*') && !Auth::guard('admin')->check()) {
             // User is not authenticated, redirect to login page
             return redirect()->route('admin.login');
         }

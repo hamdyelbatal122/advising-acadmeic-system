@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $student = auth()->user();
+        $student = Student::findOrFail($student->id);
         $notices = $student->notices()->latest()->orderBy('id','desc')->limit(5)->get();
         if ($student->activeAdvising) {
             $courses = $student->activeAdvising->courses->load('course')->load('course.professor')->count();

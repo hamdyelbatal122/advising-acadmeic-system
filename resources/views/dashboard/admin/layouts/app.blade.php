@@ -94,7 +94,7 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                      <img src="{{asset('assets/images/default.png')}}" class="user-logo" alt="">
                      <span>
-                     {{ Auth::user()->name}}                                     
+                     {{ $admin->name}}                                     
                      <i class="caret"></i>
                      </span>   
                      </a>
@@ -141,10 +141,10 @@
                      <img style="display:block" src="{{asset('assets/images/defult1.png')}}" class="img-circle" alt="">
                   </div>
                   <div class="pull-left info">
-                     <p>{{ Auth::user()->name }}</p>
+                     <p>{{ $admin->name }}</p>
                      <a href="profile/index">
                      <i class="fa-regular fa-hand color-green"></i>
-                     {{ Auth::user()->role }}  
+                     {{ $admin->role }}  
                      </a>
                   </div>
                </div>

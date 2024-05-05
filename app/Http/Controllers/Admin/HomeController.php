@@ -28,12 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $students = Student::count();
+        
+         $students = Student::count();
         $users = Admin::count();
         $courses = Course::count();
         $notices = Notice::active()->count();
         $lastNotices = Notice::active()->orderBy('id','desc')->limit(5)->get();
-        return view('dashboard.admin.home', compact('students', 'users', 'courses', 'notices', 'lastNotices'));
+        $admin = Admin::find(auth('admin')->user()->id);
+        return view('dashboard.admin.home', compact('students', 'users', 'courses', 'notices', 'lastNotices', 'admin'));
     }
     
 }

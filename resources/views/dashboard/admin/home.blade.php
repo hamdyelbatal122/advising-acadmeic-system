@@ -90,7 +90,7 @@
                         <a href="">
                         <img src="{{asset('assets/images/defult1.png')}}" alt="">            </a>
                         <h1>
-                           {{ Auth::user()->name }}
+                           {{ $admin->name }}
                         </h1>
                         <p>Admin</p>
                      </div>
@@ -101,21 +101,21 @@
                                  <i class="glyphicon glyphicon-user text-maroon-light"></i>
                               </td>
                               <td>Name</td>
-                              <td>{{Auth::user()->name}}</td>
+                              <td>{{$admin->name}}</td>
                            </tr>
                            <tr>
                               <td>
                                  <i class="fa fa-envelope text-maroon-light"></i>
                               </td>
                               <td>Email</td>
-                              <td>{{Auth::user()->email}}</td>
+                              <td>{{$admin->email}}</td>
                            </tr>
                            <tr>
                               <td>
                                  <i class="fa-solid fa-user-tie text-maroon-light"></i>
                               </td>
                               <td>Profession</td>
-                              <td>{{Auth::user()->profession}}</td>
+                              <td>{{$admin->profession}}</td>
                            </tr>
 
                         </tbody>
