@@ -50,12 +50,12 @@ class MarksController extends Controller
         ]);
         $student = Student::findOrFail($request->student_id);
         $advising = Advising::where('status','active')->findOrFail($request->advising_id);
-        $admin_id = auth()->user()->id;
+        $admin_id = auth('admin')->user()->id;
 
         foreach ($request->course as $key ) {
             $mark = new Mark();
             $mark->advising_id = $advising->id;
-            $mark->admin_id = auth()->user()->id;
+            $mark->admin_id = $admin_id;
             $mark->course_id = $request->course[$key];
             $mark->grade = $request->grade[$key];
             $mark->save();
@@ -91,7 +91,7 @@ class MarksController extends Controller
         foreach ($request->course as $key ) {
             $mark = Mark::where('advising_id', $advising->id)->where('course_id', $request->course[$key])->first();
             $mark->grade = $request->grade[$key];
-            $mark->admin_id = auth()->user()->id;
+            $mark->admin_id = admin_id;
             $mark->save();
         }
 

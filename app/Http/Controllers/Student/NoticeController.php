@@ -10,7 +10,7 @@ class NoticeController extends Controller
 {
     public function index()
     {
-        $student = auth()->user();
+        $student = auth('student')->user();
         $notices = Notice::orderBy('id','desc')->orderBy('status','Asc')->where('student_id',$student->id)->get();
 
         return view('dashboard.student..notices.index', compact('notices'));
@@ -50,7 +50,7 @@ class NoticeController extends Controller
 
     public function show($id)
     {
-        $student = auth()->user();
+        $student = auth('student')->user();
         $notice = Notice::where('student_id',$student->id)->findOrFail($id);
         return view('dashboard.student.notices.show', compact('notice'));
     }

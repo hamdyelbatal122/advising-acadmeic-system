@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $student = auth()->user()->id;
+        $student = auth('student')->user()->id;
         $student = Student::with(['activeAdvising','lastAdvising'])->findOrFail($student);
         $activeAdvising = $student->activeAdvising;
         
@@ -35,7 +35,7 @@ class ProfileController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
 
-        $student = auth()->user();
+        $student = auth('student')->user();
         if (!Hash::check($request->old_password, $student->password)) {
             return response()->json(['status'=>false,'message' => 'Old password is incorrect']);
         }

@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $student = auth()->user();
+        $student = auth('student')->user();
         $student = Student::findOrFail($student->id);
         $notices = $student->notices()->latest()->orderBy('id','desc')->limit(5)->get();
         if ($student->activeAdvising) {
@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function PrintAdvising($id)
     {
-        $student = auth()->user();
+        $student = auth('student')->user();
         $advising = Advising::where('student_id',$student->id)->findOrFail($id);
         return view('dashboard.student.advising.view', compact('student', 'advising'));
     }
@@ -47,14 +47,14 @@ class HomeController extends Controller
 
     public function viewAdmissionForm()
     {
-        $student = auth()->user();
+        $student = auth('student')->user();
         $student = Student::findOrFail($student->id);
         return view('dashboard.student.admission.view', compact('student'));
     }
 
     public function courses()
     {
-        $student = auth()->user()->id;
+        $student = auth('student')->user()->id;
         $student = Student::with('activeAdvising')->findOrFail($student);
         $activeAdvising = $student->activeAdvising;
         if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];} 
@@ -64,7 +64,7 @@ class HomeController extends Controller
 
     public function routine()
     {
-        $student = auth()->user()->id;
+        $student = auth('student')->user()->id;
         $student = Student::with('activeAdvising')->findOrFail($student);
         $activeAdvising = $student->activeAdvising;
         if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];}
@@ -74,7 +74,7 @@ class HomeController extends Controller
 
     public function exams()
     {
-        $student = auth()->user()->id;
+        $student = auth('student')->user()->id;
         $student = Student::with('activeAdvising')->findOrFail($student);
         $activeAdvising = $student->activeAdvising;
         if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course');} else { $courses = [];}
@@ -83,7 +83,7 @@ class HomeController extends Controller
 
     public function marks()
     {
-        $student = auth()->user()->id;
+        $student = auth('student')->user()->id;
         $student = Student::findOrFail($student);
         $advising = $student->lastAdvising;
         $courses = $advising->marks->load('course');        

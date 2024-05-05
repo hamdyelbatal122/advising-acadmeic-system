@@ -11,7 +11,7 @@ class UsersContoller extends Controller
 {
     public function index()
     {
-        $users = Admin::where('id', '!=', auth()->id())->get();
+        $users = Admin::where('id', '!=', auth('admin')->id())->get();
         return view('dashboard.admin.users.index', compact('users'));
     }
 

@@ -28,7 +28,7 @@ class Mark extends Model
 
     public function admin()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'admin_id', 'id');
     }
 
     // append mark 

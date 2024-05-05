@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         
-         $students = Student::count();
+        $students = Student::count();
         $users = Admin::count();
         $courses = Course::count();
         $notices = Notice::active()->count();

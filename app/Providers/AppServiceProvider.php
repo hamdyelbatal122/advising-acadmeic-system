@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('dashboard.student.layouts.app', function ($view) {
-            $student = auth()->user();
+            $student = auth('student')->user();
             $view->with('student', $student);
         });
 
