@@ -45,7 +45,7 @@ class StudentsContoller extends Controller
         ]);
 
         $data['password'] = Hash::make($request->password);
-        $data['currant_passwoed'] = $request->password;
+        $data['currant_password'] = $request->password;
         Student::create($data);
 
         return response()->json(['status'=>true,'message' => 'Student created successfully']);  
