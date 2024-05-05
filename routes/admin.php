@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StudentsContoller;
 use App\Http\Controllers\Admin\UsersContoller;
 use Illuminate\Support\Facades\Auth;
@@ -41,9 +42,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', [HomeController::class, 'index'])->name('admin.dashboard');
 
         Route::group(['prefix' => 'profile',], function () {
-            Route::get('/edit',  [ProfileController::class, 'index'])->name('admin.profile.edit');
-            Route::post('/edit/post',  [ProfileController::class, 'update'])->name('admin.profile.update');
-            Route::post('/password/edit',  [ProfileController::class, 'password'])->name('admin.profile.password');
+            Route::get('/index',  [ProfileController::class, 'index'])->name('admin.profile.index');
+            Route::get('/password',  [ProfileController::class, 'password'])->name('admin.profile.password');
+            Route::post('/password/edit',  [ProfileController::class, 'Uupdate'])->name('admin.password.update');
         });
 
         
@@ -62,6 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('create', [StudentsContoller::class, 'create'])->name('admin.students.create');  
             Route::post('store', [StudentsContoller::class, 'store'])->name('admin.students.store');
             Route::get('edit/{id}', [StudentsContoller::class, 'edit'])->name('admin.students.edit');
+            Route::get('view/{id}', [StudentsContoller::class, 'view'])->name('admin.students.view');
             Route::post('update', [StudentsContoller::class, 'update'])->name('admin.students.update');
             Route::post('delete', [StudentsContoller::class, 'delete'])->name('admin.students.delete');
         });
@@ -79,6 +81,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('index/{level?}', [AdvisingController::class, 'index'])->name('admin.advising.index');
             Route::get('create', [AdvisingController::class, 'create'])->name('admin.advising.create');  
             Route::post('store', [AdvisingController::class, 'store'])->name('admin.advising.store');
+            Route::get('student', [AdvisingController::class, 'getDataByStudent'])->name('admin.advising.student.data');
             Route::get('edit/{id}', [AdvisingController::class, 'edit'])->name('admin.advising.edit');
             Route::post('update', [AdvisingController::class, 'update'])->name('admin.advising.update');
             Route::post('delete', [AdvisingController::class, 'delete'])->name('admin.advising.delete');

@@ -101,13 +101,13 @@
                      <ul class="dropdown-menu">
                         <li class="user-body">
                            <div class="col-xs-6 text-center">
-                              <a href="profile/index">
+                              <a href="{{route('admin.profile.index')}}">
                                  <div><i class="fa fa-briefcase"></i></div>
                                  Profile 
                               </a>
                            </div>
                            <div class="col-xs-6 text-center">
-                              <a href="signin/cpassword">
+                              <a href="{{route('admin.profile.password')}}">
                                  <div><i class="fa fa-lock"></i></div>
                                  Password 
                               </a>

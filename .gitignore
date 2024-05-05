@@ -1,29 +1,3 @@
-# Ignore editor config file
-.editorconfig
-
-# Ignore environment example file
-.env.example
-
-# Ignore build artifacts
-public/build/
-
-
-# Ignore node_modules
-
-node_modules/
-
-# Ignore npm debug log
-
-npm-debug.log
-
-# Ignore yarn debug log
-
-yarn-debug.log
-
-#Ignore vendor
-
-vendor/
-
-# Ignore composer lock file
-
-composer.lock
+*
+!public/
+!.gitignore

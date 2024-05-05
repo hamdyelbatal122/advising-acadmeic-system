@@ -267,7 +267,6 @@
             toastr.success(response.message);      
    
     } 
-    document.getElementById("add").reset();
    
    },
    error: function(response){

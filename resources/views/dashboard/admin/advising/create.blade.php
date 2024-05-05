@@ -44,15 +44,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control" name="semester" id="semester">
-                                    <option value="">Select Semester</option>
-                                    <option value="1">Semester 1</option>
-                                    <option value="2">Semester 2</option>
-                                    <option value="3">Semester 3</option>
-                                    <option value="4">Semester 4</option>
-                                    <option value="5">Semester 5</option>
-                                    <option value="6">Semester 6</option>
-                                    <option value="7">Semester 7</option>
-                                    <option value="8">Semester 8</option>
+                                    <option value="">Select Student</option>
                                  </select>
                               </div>
                               <span class="col-sm-4 control-label">
@@ -177,9 +169,11 @@ $.ajax({
 
     if(response.status){
 
-    toastr.success(response.message);    
+    toastr.success(response.message);  
+
     document.getElementById("add").reset();
-   $('#table tbody').html('<tr id="noDataTr"><td colspan="4" align="center">No Course Chosen</td></tr>');
+   $('#table tbody').empty();
+   $('#table tbody').append('<tr id="noDataTr"><td colspan="4" align="center">No Course Chosen</td></tr>');
    $('.select2').val('').trigger('change');
 
 
@@ -221,14 +215,14 @@ $.ajax({
       return;
     }
 
-    var html = '<tr id="course-'+course_id+'">';
-    html += '<td>'+course_name+'</td>';
-    html += '<td>'+course_code+'</td>';
-    html += '<td>'+course_professor+'</td>';
-    html += '<td><button id="removeCourse" type="button" class="btn btn-danger" onclick="deleteRow('+course_id+')">Delete</button></td>';
-    html += '</tr>';
+    var append = '<tr id="course-'+course_id+'">';
+    append += '<td>'+course_name+'</td>';
+    append += '<td>'+course_code+'</td>';
+    append += '<td>'+course_professor+'</td>';
+    append += '<td><button id="removeCourse" type="button" class="btn btn-danger" onclick="deleteRow('+course_id+')">Delete</button></td>';
+    append += '</tr>';
 
-    $('#table tbody').append(html);
+    $('#table tbody').append(append);
 
     $('#course option[value=""]').prop('selected', true);
 
@@ -241,6 +235,37 @@ $.ajax({
          $('#table tbody').append('<tr id="noDataTr"><td colspan="4" align="center">No Course Chosen</td></tr>');
     }
    }
+
+   $('#student_id').on('change', function() {
+    var student_id = $(this).val();
+
+    $.ajax({
+      url: "{{route('admin.advising.student.data')}}",
+      type: "GET",
+      data: {student_id: student_id},
+      success: function(response) {
+         if(response.status){
+            $('#semester').empty();
+            $('#semester').append('<option value="">Select Semester</option>');
+            if(response.data.level == 1){
+               $('#semester').append('<option value="1">Semester 1</option>');
+               $('#semester').append('<option value="2">Semester 2</option>');
+            }else if(response.data.level == 2){
+               $('#semester').append('<option value="3">Semester 3</option>');
+               $('#semester').append('<option value="4">Semester 4</option>');
+            }else if(response.data.level == 3){
+               $('#semester').append('<option value="5">Semester 5</option>');
+               $('#semester').append('<option value="6">Semester 6</option>');
+            }else if(response.data.level == 4){
+               $('#semester').append('<option value="7">Semester 7</option>');
+               $('#semester').append('<option value="8">Semester 8</option>');
+            }
+
+         }
+      }
+      });
+   });
+
 
 </script>
 @endsection

@@ -51,6 +51,7 @@
                                              <td>{{$student->college}}</td>
                                              <td>{{$student->level}}</td>
                                              <td>
+                                                <a class="btn btn-primary btn-sm" href="{{route('admin.students.view', $student->id)}}"><i class="fa fa-eye"></i></a>
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.students.edit', $student->id)}}"><i class="fa fa-edit"></i></a>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$student->id}})"><i class="fa fa-trash"></i></a>
                                              </td>

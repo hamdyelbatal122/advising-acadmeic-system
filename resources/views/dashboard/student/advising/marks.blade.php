@@ -61,6 +61,7 @@
 
            <div class="col-sm-9">
                <div class="tab-pane active" id="mark">
+                @if($courses)
                 <div style="border-top:1px solid #23292F; border-left:1px solid #23292F; border-right:1px solid #23292F; border-bottom:1px solid #23292F;" class="box" id="e1">
                    <div class="box-header" style="background-color:#FFFFFF;">
                       <h3 class="box-title" style="color:#23292F;">Semester {{$advising->semester}} </h3>
@@ -105,7 +106,7 @@
                                 @endphp
                                   <tr>
                                      <td class="text-black" data-title="Subject">{{$course->course->name}}</td>
-                                     <td class="text-black" data-title="Mark">65</td>
+                                     <td class="text-black" data-title="Mark">{{$course->grade-35}}</td>
                                      <td class="text-black" data-title="Highest Mark">65</td>
                                      <td class="text-black" data-title="Mark">8</td>
                                      <td class="text-black" data-title="Highest Mark">8</td>
@@ -121,9 +122,13 @@
 
                                </tbody>
                             </table>
+                            @if($count > 0)
                             <div class="box-footer" style="padding-left:0px;">
                                <p class="text-black">Total Marks : <span class="text-red text-bold">{{number_format($count * 100,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Obtained Marks : <span class="text-red text-bold">{{number_format($myGrades,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks : <span class="text-red text-bold">{{number_format($myGrades/$count,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks() : <span class="text-red text-bold">{{number_format($total_gpa_in_marks/$count,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Gpa : <span class="text-red text-bold">{{number_format($student->gpa,2)}}</span></p>
                             </div>
+                            @endif
+
+
                          </div>
                          <div id="mCSB_1_scrollbar_horizontal" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_horizontal" style="display: none;">
                             <div class="mCSB_draggerContainer">
@@ -136,6 +141,13 @@
                       </div>
                    </div>
                 </div>
+                @else
+                <div class="box" >
+                    <div class="box-header" style="background-color:#FFFFFF;">
+                       <h3 class="box-title"  style="color:#23292F;">No Mark Found</h3>
+                    </div>
+                 </div>
+                @endif
              </div>
        </div>
    </div>

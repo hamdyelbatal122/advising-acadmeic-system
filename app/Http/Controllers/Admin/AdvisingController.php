@@ -44,9 +44,15 @@ class AdvisingController extends Controller
 
         $student = Student::find($request->student_id);
         $student_advising  = $student->advising()->where('status','active')->get();
+        $student_advising_in_this_semester = $student->advising()->where('semester',$request->semester)->where('status','completed')->get();
 
         if ($student_advising->count() > 0) {
             return response()->json(['status'=>false,'message' => 'This student already has advising in progress']);
+        }
+
+        if ($student_advising_in_this_semester->count() > 0) {
+            return response()->json(['status'=>false,'message' => 'This student already has completed advising in this semester']);
+
         }
 
         $advising =  Advising::create([
@@ -131,6 +137,12 @@ class AdvisingController extends Controller
         $advising = Advising::findOrfail($request->id);
         $advising->delete();
         return response()->json(['status'=>true,'message' => 'Advising deleted successfully']);
+    }
+
+    public function getDataByStudent(Request $request)
+    {
+        $student = Student::find($request->student_id);
+        return response()->json(['status'=>true,'data' => $student]);
     }
 
 }

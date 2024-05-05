@@ -14,9 +14,9 @@ class ProfileController extends Controller
         $student = auth('student')->user()->id;
         $student = Student::with(['activeAdvising','lastAdvising'])->findOrFail($student);
         $activeAdvising = $student->activeAdvising;
-        
         $advising = $student->lastAdvising;
-        $lastAdvisingMarks = $advising->marks->load('course'); 
+
+        if ($advising) { $lastAdvisingMarks = $advising->marks->load('course');} else { $lastAdvisingMarks = [];}
 
         if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];}
 

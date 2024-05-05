@@ -235,7 +235,7 @@
          toastr.error('Please enter first name and last name');
          return false;
       }
-      var email = $('#first_name').val() + $('#last_name').val() + '@nikUniv.edu';
+      var email = $('#first_name').val() + $('#last_name').val() + '@cis.edu';
       $('#email').val(email);
    });
    
@@ -281,6 +281,7 @@
    });
    
    });
+   
    
 </script>
 @endsection

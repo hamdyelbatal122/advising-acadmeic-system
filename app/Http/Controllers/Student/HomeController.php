@@ -86,7 +86,12 @@ class HomeController extends Controller
         $student = auth('student')->user()->id;
         $student = Student::findOrFail($student);
         $advising = $student->lastAdvising;
-        $courses = $advising->marks->load('course');        
+        if ($advising) {
+            $courses = $advising->marks->load('course');
+        } else {
+            $courses = [];
+        }
+
         return view('dashboard.student.advising.marks', compact('student', 'courses', 'advising'));
     }
 }

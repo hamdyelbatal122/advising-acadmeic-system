@@ -40,7 +40,7 @@ class StudentsContoller extends Controller
             'address' => 'required',
             'college' => 'required',
             'level' => 'required',
-            'gpa' => 'required',
+            'gpa' => 'required|numeric',
 
         ]);
 
@@ -76,7 +76,7 @@ class StudentsContoller extends Controller
             'address' => 'required',
             'college' => 'required',
             'level' => 'required',
-            'gpa' => 'required',
+            'gpa' => 'required|numeric',
             'password' => 'nullable|min:8',
             'currant_password' => 'nullable',
         ]);
@@ -103,6 +103,20 @@ class StudentsContoller extends Controller
         $student = Student::find($request->id);
         $student->delete();
         return response()->json(['status'=>true,'message' => 'Student deleted successfully','message2' => 'All data related to this student has been deleted successfully']);
+    }
+
+    public function view($id)
+    {
+        $student = Student::with(['activeAdvising','lastAdvising'])->findOrFail($id);
+        $activeAdvising = $student->activeAdvising;
+        $advisings = $student->advising->where('status','completed')->load('marks');
+
+
+
+
+        if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];}
+
+        return view('dashboard.admin.students.view', compact('student', 'courses', 'activeAdvising', 'advisings'));
     }
 
 

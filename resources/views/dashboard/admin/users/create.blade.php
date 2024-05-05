@@ -70,7 +70,7 @@
                               Role <span class="text-red">*</span>
                               </label>
                               <div class="col-sm-6">
-                                 <select class="form-control select2" name="role" id="role">
+                                 <select class="form-control " name="role" id="role">
                                     <option value=""> Chose A Role </option>
                                     <option value="Admin">Admin</option>
                                     <option value="Advisor">Advisor</option>
