@@ -47,19 +47,9 @@ class Student extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
 
     /**
      * Get the attributes that should be cast.
@@ -87,6 +77,11 @@ class Student extends Authenticatable
     public function activeAdvising()
     {
         return $this->hasOne(Advising::class, 'student_id', 'id')->where('status', 'active');
+    }
+
+    public function lastAdvising()
+    {
+        return $this->hasOne(Advising::class, 'student_id', 'id')->where('status', 'completed')->latest();
     }
 
     public function getCreatedAtAttribute($value)

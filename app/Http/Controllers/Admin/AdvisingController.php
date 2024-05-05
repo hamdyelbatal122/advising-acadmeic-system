@@ -43,10 +43,10 @@ class AdvisingController extends Controller
         }
 
         $student = Student::find($request->student_id);
-        $student_advising  = $student->advising()->where('semester', $request->semester)->where('status','active')->get();
+        $student_advising  = $student->advising()->where('status','active')->get();
 
         if ($student_advising->count() > 0) {
-            return response()->json(['status'=>false,'message' => 'This student already has advising for this semester']);
+            return response()->json(['status'=>false,'message' => 'This student already has advising in progress']);
         }
 
         $advising =  Advising::create([

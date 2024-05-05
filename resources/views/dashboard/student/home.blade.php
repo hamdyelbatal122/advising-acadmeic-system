@@ -40,7 +40,8 @@
                                  </div>
                                  <div class="inner ">
                                     <h3 class="text-white">
-                                       {{$student->activeAdvising->courses->count()}}                            
+                                       
+                                       {{$courses}}                            
                                     </h3>
                                     <p class="text-white">
                                        Courses                            

@@ -1,5 +1,5 @@
 @extends('dashboard.student.layouts.app')
-@section('title', 'routine')
+@section('title', 'Routine')
 @section('content')
 <aside class="right-side">
    <section class="content">
@@ -16,7 +16,7 @@
            <div class="col-sm-6">
                <ol class="breadcrumb">
                    <li><a href="{{route('student.home')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                   <li><a href="{{route('student.courses.index')}}">courses</a></li>
+                   <li><a href="{{route('student.courses.index')}}">Courses</a></li>
                    <li class="active">Routine</li>
                </ol>
            </div>
@@ -65,59 +65,53 @@
                        <li class="active"><a href="#routine" data-toggle="tab">Routine</a></li>
                    </ul>
 
-
                         <div class="tab-pane" id="routine">
-                           <div class="table-responsive">
-                              <table class="table table-bordered table-responsive">
-                                 <thead>
-                                    <tr>
-                                       <th class="text-center">Course</th>
-                                       <th class="text-center">Lecture</th>
-                                       <th class="text-center">Lab</th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    @foreach($courses as $course)
+                           <div class="container">
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-sm">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th class="text-center">Course</th>
+                                            <th class="text-center">Lecture</th>
+                                            <th class="text-center">Lab</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody align="center" style="padding-top: 10px">
+                                        @foreach($courses as $course)
+                                        <tr>
+                                            <td>
+                                                <h4>{{$course->course->name}}</h4>
+                                                <b>{{$course->course->code}}</b>
+                                            </td>
+                                            <td>
+                                                <p><strong>Day:</strong> {{$course->course->day_of_lecture}}</p>
+                                                <p><strong>Time:</strong> {{$course->course->time_of_lecture}} - {{$course->course->end_of_lecture}}</p>
+                                                <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                            </td>
+                                            <td>
+                                                @if($course->lab)
+                                                <p><strong>Day:</strong> {{$course->day_of_lab}}</p>
+                                                <p><strong>Time:</strong> {{$course->course->time_of_lab}} - {{$course->course->end_of_lab}}</p>
+                                                <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                                @else
+                                                <p>N/A</p>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
 
-                                    <tr>
-                                       <td style=" padding-top : 20px;"align="center" >
-                                          <h6>
-                                          {{$course->course->name}} 
-                                          <h6>
-                                          <p>{{$course->course->code}}</p>
-                                       </td>
-                                       <td class="text-center">
-                                          <p style="margin: 0 0 1px"><span class="left">Day : </span><span class="right">{{$course->course->day_of_lecture}}</span></p>
-                                          <p style="margin: 0 0 1px">{{$course->course->time_of_lecture}} :  {{$course->course->end_of_lecture}}</p>
-                                          </p>
-                                          <p style="margin: 0 0 1px">
-                                             <span class="left">Professor :</span>
-                                             <span class="right">
-                                             {{$course->course->professor->name}}                                                                      
-                                             </span>
-                                          </p>
-                                       </td>
-                                       <td class="text-center">
-                                          @if($course->course->lab)
-                                          <p style="margin: 0 0 1px"><span class="left">Day : </span><span class="right">{{$course->day_of_lab}}</span></p>
-                                          <p style="margin: 0 0 1px">{{$course->course->time_of_lab}} :  {{$course->course->end_of_lab}}</p>
-                                          </p>
-                                          <p style="margin: 0 0 1px">
-                                             <span class="left">Professor :</span>
-                                             <span class="right">
-                                             {{$course->course->professor->name}}                                                                      
-                                             </span>
-                                          </p>
-                                          @else
-                                          N/A
-                                          @endif
-                                       </td>
-                                    </tr>
-                                    @endforeach
-                                 </tbody>
-                              </table>
-                           </div>
+                                        @if(count($courses) == 0)
+                                        <tr>
+                                            <td colspan="3">No Course Found In Your Advising Form , Stay tuned for Advising Start</td>
+                                        </tr>
+                                        @endif
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+                    </div>
            </div>
        </div>
    </div>
@@ -170,21 +164,29 @@
        </div>
    </form>
 
-   <script language="javascript" type="text/javascript">
-       function printDiv(divID) {
-           var divElements = document.getElementById(divID).innerHTML;
-           var oldPage     = document.body.innerHTML;
-           document.body.innerHTML = "<html><head><title></title></head><body>" + divElements + "</body>";
-           window.print();
-           document.body.innerHTML = oldPage;
-           window.location.reload();
-       }
-
-
-
-   </script>
            </div>
        </div>
    </section>
 </aside>
+@endsection
+
+@section('js')
+<script language="javascript" type="text/javascript">
+    function printDiv(divID) {
+        var divElements = document.getElementById(divID).innerHTML;
+        var oldPage     = document.body.innerHTML;
+        document.body.innerHTML = "<html><head><title></title></head><body>" + divElements + "</body>";
+        window.print();
+        document.body.innerHTML = oldPage;
+        window.location.reload();
+    }
+
+
+
+</script>
+@endsection
+@section('css')
+<style>
+
+</style>
 @endsection

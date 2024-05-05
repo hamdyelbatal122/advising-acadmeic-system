@@ -40,9 +40,14 @@ class Advising extends Model
         return date('d-m-Y', strtotime($value));
     }
 
-    public static function scopeActive($query)
+    public function scopeActive($query)
     {
         return $query->where('status', 'active');
+    }
+
+    public function marks()
+    {
+        return $this->hasMany(Mark::class, 'advising_id', 'id');
     }
 
     

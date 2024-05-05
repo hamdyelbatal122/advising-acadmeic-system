@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdvisingController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\StudentsContoller;
 use App\Http\Controllers\Admin\UsersContoller;
@@ -82,6 +83,17 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('update', [AdvisingController::class, 'update'])->name('admin.advising.update');
             Route::post('delete', [AdvisingController::class, 'delete'])->name('admin.advising.delete');
             Route::get('show/{id}', [AdvisingController::class, 'show'])->name('admin.advising.show');
+        });
+
+        Route::group(['prefix' => 'marks'], function () {
+            Route::get('index/{level?}', [MarksController::class, 'index'])->name('admin.marks.index');
+            Route::get('create', [MarksController::class, 'create'])->name('admin.marks.create');
+            Route::post('store', [MarksController::class, 'store'])->name('admin.marks.store');
+            Route::get('student', [MarksController::class, 'getDataByStudent'])->name('admin.marks.student.data');
+            Route::get('view/{id}', [MarksController::class, 'view'])->name('admin.marks.show');
+            Route::get('edit/{id}', [MarksController::class, 'edit'])->name('admin.marks.edit');
+            Route::post('update', [MarksController::class, 'update'])->name('admin.marks.update');
+
         });
 
 

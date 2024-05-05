@@ -153,13 +153,13 @@
                <ul class="sidebar-menu">
                   <li {{Request::is('dashboard') ? 'class=active' : ''}}><a href="{{route('student.home')}}"><i class="fa fa-laptop"></i><span>Dashboard</span> </a></li>
 
-                  <li {{Request::is('*/courses/*') && !Request::is('*/courses/routine*') ? 'class=active' : ''}}><a href="{{route('student.courses.index')}}"><i class="fa icon-subject"></i><span>My Course</span> </a></li>
+                  <li {{Request::is('*/courses/*') && !Request::is('*/courses/routine*') && !Request::is('*/courses/exams*') ? 'class=active' : ''}}><a href="{{route('student.courses.index')}}"><i class="fa icon-subject"></i><span>My Course</span> </a></li>
 
                   <li {{Request::is('*/routine') ? 'class=active' : ''}}><a href="{{route('student.courses.routine')}}"><i class="fa icon-routine"></i><span>Time Table</span> </a></li>
 
-                  <li class=""><a href=""><i class="fa fa-puzzle-piece"></i><span>Exam Schedule</span> </a></li>
+                  <li {{Request::is('*/exams') ? 'class=active' : ''}}><a href="{{route('student.courses.exams')}}"><i class="fa fa-puzzle-piece"></i><span>Exam Schedules</span> </a></li>
                  
-                  <li class=""><a href=""><i class="fa fa-flask"></i><span>Mark</span> </a></li>
+                  <li {{Request::is('*/marks') ? 'class=active' : ''}}><a href="{{route('student.marks.index')}}"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                  
                   <li {{Request::is('*/notices/*') ? 'class=active' : ''}}><a href="{{route('student.notices.index')}}"><i class="fa fa-envelope"></i><span>Notices</span> </a></li>
                   

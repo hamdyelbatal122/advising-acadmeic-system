@@ -12,8 +12,15 @@ class ProfileController extends Controller
     public function index()
     {
         $student = auth()->user()->id;
-        $student = Student::with('activeAdvising')->findOrFail($student);
-        return view('dashboard.student.profile.index', compact('student'));
+        $student = Student::with(['activeAdvising','lastAdvising'])->findOrFail($student);
+        $activeAdvising = $student->activeAdvising;
+        
+        $advising = $student->lastAdvising;
+        $lastAdvisingMarks = $advising->marks->load('course'); 
+
+        if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];}
+
+        return view('dashboard.student.profile.index', compact('student', 'courses', 'activeAdvising', 'lastAdvisingMarks'));
     }
 
     public function password()

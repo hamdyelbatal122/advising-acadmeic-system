@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'admin'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'admin'),
+        'guard' => env('AUTH_GUARD', 'student'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'student'),
     ],
 
     /*

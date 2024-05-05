@@ -117,7 +117,7 @@
                 <p>
                   CIS University stands as a beacon of academic excellence, fostering innovation and empowering students to thrive in a dynamic global landscape. Join us in shaping tomorrow's leaders through transformative education and impactful learning experiences &nbsp;                                ...                            
                 </p>
-                <a href="{{route('site.abou')}}" class="btn btn-outline">learn more</a>
+                <a href="{{route('site.about')}}" class="btn btn-outline">learn more</a>
              </div>
           </div>
           <div class="col-12 col-md-6 col-lg-7">
@@ -240,7 +240,7 @@
     <div class="container">
        <div class="section-head">
           <h2 class="section-title">University’s Gallery</h2>
-          <a href="https://demo.school.inilabs.xyz/frontend/page/gallery" class="section-btn">
+          <a href="{{route('site.gallery')}}" class="section-btn">
           <span>see more</span>
           <i class="lni lni-arrow-right"></i>
           </a>

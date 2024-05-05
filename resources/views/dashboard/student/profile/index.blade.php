@@ -10,7 +10,9 @@
                <div class="col-sm-6">
                   <button class="btn-cs btn-sm-cs" onclick="printDiv('printablediv')"><span class="fa fa-print"></span> Print </button>
                   <button class="btn-cs btn-sm-cs" data-toggle="modal" data-target="#mail"><i class="fa-regular fa-envelope"></i> Send PDF To Mail</button>
+                  @if($student->activeAdvising)
                   <a href="{{route('student.advising.print',$student->activeAdvising)}}"><button class="btn-cs btn-sm-cs"><i class="fa-solid fa-paperclip"></i> My Advising</button></a>
+                  @endif
                </div>
                <div class="col-sm-6">
                   <ol class="breadcrumb">
@@ -132,8 +134,8 @@
                                  </div>
                                  <div class="profile-view-tab">
                                     <p><span>Currant Advising </span>: 
-                                       @if($student->activeAdvising)
-                                       <a href="{{route('student.advising.print',$student->activeAdvising)}}"> 
+                                       @if($activeAdvising)
+                                       <a href="{{route('student.advising.print',$activeAdvising->id)}}"> 
                                        <button class="btn-cs btn-sm-cs">View </button>
                                        </a>
                                        @endif
@@ -143,63 +145,55 @@
                            </div>
                         </div>
                         <div class="tab-pane" id="routine">
-                           <div class="table-responsive">
-                              <table class="table table-bordered table-responsive">
-                                 <thead>
-                                    <tr>
-                                       <th class="text-center">Course</th>
-                                       <th class="text-center">Lecture</th>
-                                       <th class="text-center">Lab</th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    @foreach($student->activeAdvising->courses as $course)
-                                    @php
-                                    $course = \App\Models\Course::find($course->course_id);
-                                    @endphp
-                                    <tr>
-                                       <td style=" padding-top : 20px;"align="center" >
-                                          <h6>
-                                          {{$course->name}} 
-                                          <h6>
-                                          <p>{{$course->code}}</p>
-                                       </td>
-                                       <td class="text-center">
-                                          <p style="margin: 0 0 1px"><span class="left">Day : </span><span class="right">{{$course->day_of_lecture}}</span></p>
-                                          <p style="margin: 0 0 1px">{{$course->time_of_lecture}} :  {{$course->end_of_lecture}}</p>
-                                          </p>
-                                          <p style="margin: 0 0 1px">
-                                             <span class="left">Professor :</span>
-                                             <span class="right">
-                                             {{$course->professor->name}}                                                                      
-                                             </span>
-                                          </p>
-                                       </td>
-                                       <td class="text-center">
-                                          @if($course->lab)
-                                          <p style="margin: 0 0 1px"><span class="left">Day : </span><span class="right">{{$course->day_of_lab}}</span></p>
-                                          <p style="margin: 0 0 1px">{{$course->time_of_lab}} :  {{$course->end_of_lab}}</p>
-                                          </p>
-                                          <p style="margin: 0 0 1px">
-                                             <span class="left">Professor :</span>
-                                             <span class="right">
-                                             {{$course->professor->name}}                                                                      
-                                             </span>
-                                          </p>
-                                          @else
-                                          N/A
+                          <div class="container">
+                              <br>
+                              <div class="table-responsive">
+                                  <table class="table table-bordered table-sm">
+                                      <thead class="thead-light">
+                                          <tr>
+                                              <th class="text-center">Course</th>
+                                              <th class="text-center">Lecture</th>
+                                              <th class="text-center">Lab</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody align="center" style="padding-top: 10px">
+                                          @foreach($courses as $course)
+                                          <tr>
+                                              <td>
+                                                  <h4>{{$course->course->name}}</h4>
+                                                  <b>{{$course->course->code}}</b>
+                                              </td>
+                                              <td>
+                                                  <p><strong>Day:</strong> {{$course->course->day_of_lecture}}</p>
+                                                  <p><strong>Time:</strong> {{$course->course->time_of_lecture}} - {{$course->course->end_of_lecture}}</p>
+                                                  <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                              </td>
+                                              <td>
+                                                  @if($course->lab)
+                                                  <p><strong>Day:</strong> {{$course->day_of_lab}}</p>
+                                                  <p><strong>Time:</strong> {{$course->course->time_of_lab}} - {{$course->course->end_of_lab}}</p>
+                                                  <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                                  @else
+                                                  <p>N/A</p>
+                                                  @endif
+                                              </td>
+                                          </tr>
+                                          @endforeach
+                                          @if(count($courses) == 0)
+                                          <tr>
+                                              <td colspan="3">No Course Found In Your Advising Form , Stay tuned for Advising Start</td>
+                                          </tr>
                                           @endif
-                                       </td>
-                                    </tr>
-                                    @endforeach
-                                 </tbody>
-                              </table>
-                           </div>
+
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
                         </div>
                         <div class="tab-pane " id="mark">
                            <div style="border-top:1px solid #23292F; border-left:1px solid #23292F; border-right:1px solid #23292F; border-bottom:1px solid #23292F;" class="box" id="e1">
                               <div class="box-header" style="background-color:#FFFFFF;">
-                                 <h3 class="box-title" style="color:#23292F;">First Semester</h3>
+                                 <h3 class="box-title" style="color:#23292F;">Semester {{$student->lastAdvising->semester}}</h3>
                               </div>
                               <div class="box-body mark-bodyID mCustomScrollbar _mCS_1 mCS_no_scrollbar" style="border-top:1px solid #23292F;">
                                  <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_horizontal mCSB_inside" style="max-height: none;" tabindex="0">
@@ -229,8 +223,20 @@
                                              </tr>
                                           </thead>
                                           <tbody>
+                                           @php
+                                           $myGrades = 0;
+                                          
+                                           $count = $lastAdvisingMarks->count();
+                                           $total_gpa_in_marks = 0;
+
+                                           @endphp
+                                           @foreach($lastAdvisingMarks as $course)
+                                           @php
+                                           $myGrades += $course->grade;
+                                           $total_gpa_in_marks += $course->mark;
+                                           @endphp
                                              <tr>
-                                                <td class="text-black" data-title="Subject">Bangla</td>
+                                                <td class="text-black" data-title="Subject">{{$course->course->name}}</td>
                                                 <td class="text-black" data-title="Mark">65</td>
                                                 <td class="text-black" data-title="Highest Mark">65</td>
                                                 <td class="text-black" data-title="Mark">8</td>
@@ -239,70 +245,16 @@
                                                 <td class="text-black" data-title="Highest Mark">8</td>
                                                 <td class="text-black" data-title="Mark">8</td>
                                                 <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">89</td>
+                                                <td class="text-black" data-title="Mark">{{$course->grade}}</td>
                                                 <td class="text-black" data-title="Point">5.00</td>
-                                                <td class="text-black" data-title="Grade">A+</td>
+                                                <td class="text-black" data-title="Grade">{{$course->grade_of_mark}}</td>
                                              </tr>
-                                             <tr>
-                                                <td class="text-black" data-title="Subject">Math Matrix</td>
-                                                <td class="text-black" data-title="Mark">65</td>
-                                                <td class="text-black" data-title="Highest Mark">65</td>
-                                                <td class="text-black" data-title="Mark">8</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">5</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">5</td>
-                                                <td class="text-black" data-title="Highest Mark">7</td>
-                                                <td class="text-black" data-title="Mark">83</td>
-                                                <td class="text-black" data-title="Point">5.00</td>
-                                                <td class="text-black" data-title="Grade">A+</td>
-                                             </tr>
-                                             <tr>
-                                                <td class="text-black" data-title="Subject">Drawing</td>
-                                                <td class="text-black" data-title="Mark">55</td>
-                                                <td class="text-black" data-title="Highest Mark">60</td>
-                                                <td class="text-black" data-title="Mark">8</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">5</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">8</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">76</td>
-                                                <td class="text-black" data-title="Point">4.00</td>
-                                                <td class="text-black" data-title="Grade">A</td>
-                                             </tr>
-                                             <tr>
-                                                <td class="text-black" data-title="Subject">English</td>
-                                                <td class="text-black" data-title="Mark">50</td>
-                                                <td class="text-black" data-title="Highest Mark">65</td>
-                                                <td class="text-black" data-title="Mark">5</td>
-                                                <td class="text-black" data-title="Highest Mark">6</td>
-                                                <td class="text-black" data-title="Mark">5</td>
-                                                <td class="text-black" data-title="Highest Mark">7</td>
-                                                <td class="text-black" data-title="Mark">4</td>
-                                                <td class="text-black" data-title="Highest Mark">6</td>
-                                                <td class="text-black" data-title="Mark">64</td>
-                                                <td class="text-black" data-title="Point">3.50</td>
-                                                <td class="text-black" data-title="Grade">A-</td>
-                                             </tr>
-                                             <tr>
-                                                <td class="text-black" data-title="Subject">Botany</td>
-                                                <td class="text-black" data-title="Mark">61</td>
-                                                <td class="text-black" data-title="Highest Mark">70</td>
-                                                <td class="text-black" data-title="Mark">7</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">5</td>
-                                                <td class="text-black" data-title="Highest Mark">5</td>
-                                                <td class="text-black" data-title="Mark">7</td>
-                                                <td class="text-black" data-title="Highest Mark">8</td>
-                                                <td class="text-black" data-title="Mark">80</td>
-                                                <td class="text-black" data-title="Point">5.00</td>
-                                                <td class="text-black" data-title="Grade">A+</td>
-                                             </tr>
+                                           @endforeach
+           
                                           </tbody>
                                        </table>
                                        <div class="box-footer" style="padding-left:0px;">
-                                          <p class="text-black">Total Marks : <span class="text-red text-bold">500.00</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Obtained Marks : <span class="text-red text-bold">392.00</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks : <span class="text-red text-bold">78.40</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks(%) : <span class="text-red text-bold">78.00</span>&nbsp;&nbsp;&nbsp;&nbsp;Gpa : <span class="text-red text-bold">4.50</span></p>
+                                          <p class="text-black">Total Marks : <span class="text-red text-bold">{{number_format($count * 100,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Obtained Marks : <span class="text-red text-bold">{{number_format($myGrades,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks : <span class="text-red text-bold">{{number_format($myGrades/$count,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks() : <span class="text-red text-bold">{{number_format($total_gpa_in_marks/$count,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Gpa : <span class="text-red text-bold">{{number_format($student->gpa,2)}}</span></p>
                                        </div>
                                     </div>
                                     <div id="mCSB_1_scrollbar_horizontal" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_horizontal" style="display: none;">

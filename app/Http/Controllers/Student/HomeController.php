@@ -28,13 +28,18 @@ class HomeController extends Controller
     {
         $student = auth()->user();
         $notices = $student->notices()->latest()->orderBy('id','desc')->limit(5)->get();
-        return view('dashboard.student.home', compact('student', 'notices'));
+        if ($student->activeAdvising) {
+            $courses = $student->activeAdvising->courses->load('course')->load('course.professor')->count();
+        } else {
+            $courses = 0;
+        }
+        return view('dashboard.student.home', compact('student', 'notices', 'courses'));
     }
 
     public function PrintAdvising($id)
     {
         $student = auth()->user();
-        $advising = Advising::where('status','active')->where('student_id',$student->id)->findOrFail($id);
+        $advising = Advising::where('student_id',$student->id)->findOrFail($id);
         return view('dashboard.student.advising.view', compact('student', 'advising'));
     }
 
@@ -48,15 +53,39 @@ class HomeController extends Controller
 
     public function courses()
     {
-        $student = auth()->user();
-        $courses = $student->activeAdvising->courses->load('course')->load('course.professor');
+        $student = auth()->user()->id;
+        $student = Student::with('activeAdvising')->findOrFail($student);
+        $activeAdvising = $student->activeAdvising;
+        if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];} 
+
         return view('dashboard.student.courses.index', compact('student', 'courses'));
     } 
 
     public function routine()
     {
-        $student = auth()->user();
-        $courses = $student->activeAdvising->courses->load('course')->load('course.professor');
+        $student = auth()->user()->id;
+        $student = Student::with('activeAdvising')->findOrFail($student);
+        $activeAdvising = $student->activeAdvising;
+        if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];}
+
         return view('dashboard.student.advising.routine', compact('student', 'courses'));
+    }
+
+    public function exams()
+    {
+        $student = auth()->user()->id;
+        $student = Student::with('activeAdvising')->findOrFail($student);
+        $activeAdvising = $student->activeAdvising;
+        if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course');} else { $courses = [];}
+        return view('dashboard.student.advising.exams', compact('student', 'courses'));
+    }
+
+    public function marks()
+    {
+        $student = auth()->user()->id;
+        $student = Student::findOrFail($student);
+        $advising = $student->lastAdvising;
+        $courses = $advising->marks->load('course');        
+        return view('dashboard.student.advising.marks', compact('student', 'courses', 'advising'));
     }
 }

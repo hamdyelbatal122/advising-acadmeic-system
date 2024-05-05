@@ -157,7 +157,7 @@
                  
                   <li {{Request::is('*/students/*') ? 'class=active' : ''}}> <a href="{{route('admin.students.index')}}"><i class="fa icon-student"></i><span>Students</span> </a></li>
                  
-                  <li class="treeview {{Request::is('*/courses/*','*/advising/*') ? 'active' : ''}}">
+                  <li class="treeview {{Request::is('*/courses/*','*/advising/*','*/marks/*') ? 'active' : ''}}">
 
                      <a href="#"><i class="fa icon-academicmain"></i><span>Academic</span> <i class="fa fa-angle-left pull-right"></i></a>
 
@@ -166,7 +166,7 @@
                      
                         <li {{Request::is('*/advising/*') ? 'class=active' : ''}}><a href="{{route('admin.advising.index')}}" style="margin-left: 0px;"><i class="fa icon-assignment"></i><span>Advising</span> </a></li>
                     
-                        <li {{Request::is('*/marks/*') ? 'class=active' : ''}}><a href="#" style="margin-left: 0px;"><i class="fa icon-markmain"></i><span>Marks</span> </a></li>
+                        <li {{Request::is('*/marks/*') ? 'class=active' : ''}}><a href="{{route('admin.marks.index')}}" style="margin-left: 0px;"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                      </ul>
                      
                   </li>

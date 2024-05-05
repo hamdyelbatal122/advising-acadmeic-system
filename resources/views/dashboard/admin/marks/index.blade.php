@@ -1,5 +1,5 @@
 @extends('dashboard.admin.layouts.app')
-@section('title', 'Advisings')
+@section('title', 'Marks')
 @section('content')
 <aside class="right-side">
    <section class="content">
@@ -7,10 +7,10 @@
          <div class="col-xs-12">
             <div class="box">
                <div class="box-header">
-                  <h3 class="box-title"><i class="fa icon-assignment"></i> Advisings</h3>
+                  <h3 class="box-title"><i class=" fa fa-file-invoice"></i> Marks</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                     <li class="active">Advisings</li>
+                     <li class="active">Marks</li>
                   </ol>
                </div>
                <!-- /.box-header -->
@@ -19,9 +19,9 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
-                           <a href="{{route('admin.advising.create')}}">
+                           <a href="{{route('admin.marks.create')}}">
                            <i class="fa fa-plus"></i>
-                           Create Advising                                 
+                           Create Mark                                 
                         </a>
                            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
                               <select class="form-control " name="level_id" id="level_id">
@@ -35,7 +35,7 @@
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
-                              <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true">All Advisings</a></li>
+                              <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true">All Marks</a></li>
                            </ul>
                            <div class="tab-content">
                               <div id="all" class="tab-pane active">
@@ -49,24 +49,22 @@
                                              <th>Semster </th>
                                              <th>Year</th>
                                              <td>Created By</td>
-                                             <th>Created At</th>
                                              <th>Action</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                           @foreach($advisings as $advising)
                                           <tr id="id-{{$advising->id}}">
-                                             <td>{{$advising->id}}</td>
+                                             <td>{{$loop->iteration}}</td>
                                              <td>{{$advising->student->id}} - {{$advising->student->first_name}} {{$advising->student->last_name}}</td>
                                              <td>{{$advising->level}}</td>
-                                             <td>{{$advising->semster}}</td>
-                                             <td>{{$advising->year}}</td>
+                                             <td>{{$advising->semester}}</td>
                                              <td>{{$advising->admin->name}}</td>
-                                             <td>{{$advising->created_at}}</td>
+                                             <td>{{$advising->admin->name}}</td>
+
                                              <td>
-                                                <a class="btn btn-info btn-sm" href="{{route('admin.advising.show', $advising->id)}}" target="_blank" ><i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-success btn-sm" href="{{route('admin.advising.edit', $advising->id)}}"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-danger btn-sm" onclick="deleteRow({{$advising->id}})"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-info btn-sm" href="{{route('admin.marks.show', $advising->id)}}" target="_blank" ><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-success btn-sm" href="{{route('admin.marks.edit', $advising->id)}}"><i class="fa fa-edit"></i></a>
                                              </td>
                                           </tr>
                                           @endforeach
@@ -99,70 +97,11 @@
    $('#level_id').on('change', function() {
     var level_id = $(this).val();
 
-    return window.location.href = "{{route('admin.advising.index')}}/" + level_id;
+    return window.location.href = "{{route('admin.marks.index')}}/" + level_id;
 
    });
    
-   function deleteRow(id){
    
-   swal({
-   
-   title: "Are you want to delete this advising?",   
-   
-   type: "warning",
-   
-   showCancelButton: true,
-   
-   confirmButtonColor: "#DD6B55",
-   
-   confirmButtonText: "Delete",
-   
-   cancelButtonText: "Cancel",
-   
-   closeOnConfirm: false
-   
-   }, function (isConfirm) {
-   
-   if (!isConfirm) return;
-   
-   $.ajax({
-   
-   url: "{{route('admin.advising.delete')}}",
-   
-   type: "post",
-   
-   data: {
-   
-       id: id,
-       '_token':'{{csrf_token()}}'
-   },
-   
-   dataType: "json",
-   
-   success: function (response) {
-   
-     if(response.status){
-      swal(response.message,response.message2,"success");
-   
-     $("#id-" +id).remove();
-   
-     }else{
-         swal(response.message,response.message2,"error");
-     }
-      
-   
-   },
-   
-   error: function (xhr, ajaxOptions, thrownError) {
-      
-      swal("Error deleting!", "Please try again", "error");
-      
-   }
-   
-   });
-   
-   });
-   }
    
 </script>
 @endsection

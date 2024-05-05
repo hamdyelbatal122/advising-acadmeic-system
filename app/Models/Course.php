@@ -32,7 +32,6 @@ class Course extends Model
         return $this->belongsTo(Admin::class, 'professor_id', 'id');
     }
 
-    // add filed to any result of this model 
 
     protected $appends = ['end_of_lecture', 'end_of_lab', ];
 
