@@ -90,8 +90,8 @@
                                                 <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
                                             </td>
                                             <td>
-                                                @if($course->lab)
-                                                <p><strong>Day:</strong> {{$course->day_of_lab}}</p>
+                                                @if($course->course->lab)
+                                                <p><strong>Day:</strong> {{$course->course->day_of_lab}}</p>
                                                 <p><strong>Time:</strong> {{$course->course->time_of_lab}} - {{$course->course->end_of_lab}}</p>
                                                 <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
                                                 @else
