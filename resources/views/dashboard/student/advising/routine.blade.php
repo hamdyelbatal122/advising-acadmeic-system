@@ -66,7 +66,7 @@
                    </ul>
 
                         <div class="tab-pane" id="routine">
-                           <div class="container">
+                           {{-- <div class="container"> --}}
                             <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-sm">
@@ -110,7 +110,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        {{-- </div> --}}
                     </div>
            </div>
        </div>
@@ -171,6 +171,7 @@
 @endsection
 
 @section('js')
+<script src="{{asset('assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 <script language="javascript" type="text/javascript">
     function printDiv(divID) {
         var divElements = document.getElementById(divID).innerHTML;
@@ -180,12 +181,10 @@
         document.body.innerHTML = oldPage;
         window.location.reload();
     }
-
-
-
 </script>
 @endsection
 @section('css')
+<link rel="stylesheet" href="{{asset('assets/css/jquery.mCustomScrollbar.css')}}">
 <style>
 
 </style>

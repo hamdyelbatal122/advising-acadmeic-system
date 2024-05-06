@@ -145,7 +145,7 @@
                            </div>
                         </div>
                         <div class="tab-pane" id="routine">
-                          <div class="container">
+                          {{-- <div class="container"> --}}
                               <br>
                               <div class="table-responsive">
                                   <table class="table table-bordered table-sm">
@@ -188,7 +188,7 @@
                                       </tbody>
                                   </table>
                               </div>
-                          </div>
+                          {{-- </div> --}}
                         </div>
                         <div class="tab-pane " id="mark">
                            @if($lastAdvisingMarks)
@@ -380,7 +380,7 @@
 </aside>
 @endsection
 @section('js')
-{{-- <script src="https://demo.school.inilabs.xyz/assets/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> --}}
+<script src="{{asset('assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 <script language="javascript" type="text/javascript">
    function printDiv(divID) {
        //Get the HTML of div
@@ -409,7 +409,5 @@
 </script>
 @endsection
 @section('css')
-{{-- 
-<link rel="stylesheet" href="https://demo.school.inilabs.xyz/assets/custom-scrollbar/jquery.mCustomScrollbar.css">
---}}
+<link rel="stylesheet" href="{{asset('assets/css/jquery.mCustomScrollbar.css')}}">
 @endsection
