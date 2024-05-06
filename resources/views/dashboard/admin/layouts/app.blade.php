@@ -82,6 +82,17 @@
                                        </h4>
                                     </a>
                                  </li>
+                                 <li class="language" id="arabic">
+                                    <a href="language/index/arabic">
+                                       <div class="pull-left">
+                                          <img src="{{asset('assets/images/language_image/french.png')}}">
+                                       </div>
+                                       <h4>
+                                          French
+                                       </h4>
+                                    </a>
+                                 </li>
+
                               </ul>
                               <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div>
                               <div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
