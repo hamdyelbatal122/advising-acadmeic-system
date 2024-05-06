@@ -145,7 +145,7 @@
                            </div>
                         </div>
                         <div class="tab-pane" id="routine">
-                           <div class="container">
+                           {{-- <div class="container"> --}}
                               <br>
                               <div class="table-responsive">
                                  <table class="table table-bordered table-sm">
@@ -187,7 +187,7 @@
                                     </tbody>
                                  </table>
                               </div>
-                           </div>
+                           {{-- </div> --}}
                         </div>
                         <div class="tab-pane " id="mark">
                            @foreach($advisings as $advising)
