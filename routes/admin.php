@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RolesContoller;
 use App\Http\Controllers\Admin\StudentsContoller;
 use App\Http\Controllers\Admin\UsersContoller;
 use Illuminate\Support\Facades\Auth;
@@ -109,6 +110,16 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('send', [NoticeController::class, 'send'])->name('admin.notices.send');
             Route::post('delete', [NoticeController::class, 'delete'])->name('admin.notices.delete');
         });
+
+        Route::group(['prefix' => 'roles'], function () {
+            Route::get('index', [RolesContoller::class, 'index'])->name('admin.roles.index');
+            Route::get('create', [RolesContoller::class, 'create'])->name('admin.roles.create');
+            Route::post('store', [RolesContoller::class, 'store'])->name('admin.roles.store');
+            Route::get('edit/{id}', [RolesContoller::class, 'edit'])->name('admin.roles.edit');
+            Route::post('update', [RolesContoller::class, 'update'])->name('admin.roles.update');
+            Route::post('delete', [RolesContoller::class, 'delete'])->name('admin.roles.delete');
+        });
+
 
 
     });

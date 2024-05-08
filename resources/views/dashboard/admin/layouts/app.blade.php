@@ -155,7 +155,7 @@
                      <p>{{ $admin->name }}</p>
                      <a href="profile/index">
                      <i class="fa-regular fa-hand color-green"></i>
-                     {{ $admin->role }}  
+                     {{ $admin->role_name }}  
                      </a>
                   </div>
                </div>
@@ -163,27 +163,36 @@
 
                   <li {{Request::is('*/dashboard') ? 'class=active' : ''}}><a href="{{route('admin.dashboard')}}"><i class="fa fa-laptop"></i><span>Dashboard</span> </a></li>
                  
-                 
+                  @can('View Admins')
                   <li {{Request::is('*/users/*') ? 'class=active' : ''}}><a href="{{route('admin.users.index')}}"><i class="fa icon-teacher"></i><span>Users</span> </a></li>
-                 
+                 @endcan
+                 @can('View Students')
                   <li {{Request::is('*/students/*') ? 'class=active' : ''}}> <a href="{{route('admin.students.index')}}"><i class="fa icon-student"></i><span>Students</span> </a></li>
-                 
+                 @endcan
+
                   <li class="treeview {{Request::is('*/courses/*','*/advising/*','*/marks/*') ? 'active' : ''}}">
 
                      <a href="#"><i class="fa icon-academicmain"></i><span>Academic</span> <i class="fa fa-angle-left pull-right"></i></a>
 
                      <ul class="treeview-menu">
+                        @can('View Courses')
                         <li {{Request::is('*/courses/*') ? 'class=active' : ''}}><a href="{{route('admin.courses.index')}}" style="margin-left: 0px;"><i class="fa icon-subject"></i><span>Courses</span> </a></li>
-                     
+                        @endcan
+                        @can('View Advisings')
                         <li {{Request::is('*/advising/*') ? 'class=active' : ''}}><a href="{{route('admin.advising.index')}}" style="margin-left: 0px;"><i class="fa icon-assignment"></i><span>Advising</span> </a></li>
-                    
+                        @endcan
+                        @can('View Marks')
                         <li {{Request::is('*/marks/*') ? 'class=active' : ''}}><a href="{{route('admin.marks.index')}}" style="margin-left: 0px;"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
+                        @endcan
                      </ul>
                      
                   </li>
-
-                  <li {{Request::is('*/notices/*') ? 'class=active' : ''}}><a href="{{route('admin.notices.index')}}"><i class="fa fa-envelope"></i><span>Notices</span> </a></li>
-
+                        @can('View Notices')
+                        <li {{Request::is('*/notices/*') ? 'class=active' : ''}}><a href="{{route('admin.notices.index')}}"><i class="fa fa-envelope"></i><span>Notices</span> </a></li>
+                        @endcan
+                        @can('View Roles')
+                        <li {{Request::is('*/roles/*') ? 'class=active' : ''}}><a href="{{route('admin.roles.index')}}"><i class="fa fa-person-military-pointing"></i><span>Roles</span> </a></li>
+                        @endcan
                </ul>
             </section>
             <!-- /.sidebar -->

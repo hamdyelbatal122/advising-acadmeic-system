@@ -3,18 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 
 class Admin extends Authenticatable
 {
     
     protected $guard = 'admin';
 
-    use HasFactory;
-    use Notifiable;
-    use HasRoles;
+    use HasFactory, Notifiable, HasRoles;
+
 
 
     /**
@@ -26,7 +27,7 @@ class Admin extends Authenticatable
         'name',
         'email',
         'profession',
-        'role',
+        'role_name',
         'password',
     ];
 

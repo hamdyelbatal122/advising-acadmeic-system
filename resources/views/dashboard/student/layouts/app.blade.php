@@ -172,6 +172,8 @@
                   <li {{Request::is('*/marks') ? 'class=active' : ''}}><a href="{{route('student.marks.index')}}"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                  
                   <li {{Request::is('*/notices/*') ? 'class=active' : ''}}><a href="{{route('student.notices.index')}}"><i class="fa fa-envelope"></i><span>Notices</span> </a></li>
+
+
                   
                </ul>
             </section>

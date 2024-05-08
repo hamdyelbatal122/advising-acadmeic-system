@@ -66,15 +66,15 @@
                            </div>
 
                            <div class="form-group">
-                              <label for="role" class="col-sm-2 control-label">
+                              <label for="role_name" class="col-sm-2 control-label">
                               Role <span class="text-red">*</span>
                               </label>
                               <div class="col-sm-6">
-                                 <select class="form-control " name="role" id="role">
+                                 <select class="form-control " name="role_name" id="role_name">
                                     <option value=""> Chose A Role </option>
-                                    <option value="Admin">Admin</option>
-                                    <option value="Advisor">Advisor</option>
-                                    <option value="Professor">Professor</option>
+                                    @foreach($roles as $role)
+                                    <option value="{{$role->name}}">{{$role->name}}</option>
+                                    @endforeach
                                  </select>
                               </div>
                               <span class="col-sm-4 control-label">

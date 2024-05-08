@@ -71,11 +71,11 @@
                               Role <span class="text-red">*</span>
                               </label>
                               <div class="col-sm-6">
-                                 <select class="form-control " name="role" id="role">
+                                 <select class="form-control " name="role_name" id="role_name">
                                     <option value=""> Chose A Role </option>
-                                    <option value="Admin" @if($user->role == 'Admin') selected @endif>Admin</option>
-                                    <option value="Advisor" @if($user->role == 'Advisor') selected @endif>Advisor</option>
-                                    <option value="Professor" @if($user->role == 'Professor') selected @endif>Professor</option>
+                                    @foreach($roles as $role)
+                                    <option value="{{$role->name}}" @if ($user->hasRole($role->name))selected @endif>{{$role->name}}</option>
+                                    @endforeach
                                  </select>
                               </div>
                               <span class="col-sm-4 control-label">

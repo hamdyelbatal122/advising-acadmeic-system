@@ -49,7 +49,7 @@
                                              <td>{{$user->name}}</td>
                                              <td>{{$user->email}}</td>
                                              <td>{{$user->profession}}</td>
-                                             <td>{{$user->role}}</td>
+                                             <td>{{$user->role_name}}</td>
                                              <td>
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$user->id}})"><i class="fa fa-trash"></i></a>
