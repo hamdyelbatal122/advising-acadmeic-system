@@ -7,7 +7,7 @@
          <div class="col-xs-12">
             <div class="box">
                <div class="box-header">
-                  <h3 class="box-title"><i class="fa icon-envelope"></i> Notices</h3>
+                  <h3 class="box-title"><i class="fa fa-envelope"></i> Notices</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('student.home')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
                      <li class="active">Notices</li>
@@ -20,7 +20,7 @@
                      <div class="col-sm-12">
                         <form class="form-horizontal" role="form" method="post" id="add">
                            @csrf
-                           <input name="student_id" type="hidden" value="{{auth('student')->user()}}">
+                           <input name="student_id" type="hidden" value="{{auth('student')->user()->id}}">
 
                            <div class="form-group">
                               <label for="title" class="col-sm-1 control-label">

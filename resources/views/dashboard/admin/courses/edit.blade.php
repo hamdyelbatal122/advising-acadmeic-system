@@ -1,5 +1,5 @@
 @extends('dashboard.admin.layouts.app')
-@section('title', 'Edit User')
+@section('title', 'Edit Courses')
 @section('content')
 <aside class="right-side">
    <section class="content">
@@ -7,11 +7,11 @@
          <div class="col-xs-12">
             <div class="box">
                <div class="box-header">
-                  <h3 class="box-title"><i class="fa icon-teacher"></i> Users</h3>
+                  <h3 class="box-title"><i class="fa icon-subject"></i> Courses</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                     <li><a href="{{route('admin.users.index')}}">Users</a></li>
-                     <li class="active">Edit User</li>
+                     <li><a href="{{route('admin.courses.index')}}">Courses</a></li>
+                     <li class="active">Edit Courses</li>
                   </ol>
                </div>
                <!-- /.box-header -->

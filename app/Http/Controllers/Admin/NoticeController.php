@@ -21,7 +21,7 @@ class NoticeController extends Controller
 
     public function index()
     {
-        $notices = Notice::orderBy('id','desc')->orderBy('status','Asc')->get();
+        $notices = Notice::orderBy('status','Asc')->orderBy('id','desc')->get();
 
         return view('dashboard.admin.notices.index', compact('notices'));
     }

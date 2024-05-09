@@ -11,23 +11,11 @@
                    <span>Legacy of Excellence</span>
                    <h1>Empowering Tomorrow's Leaders</h1>
                    <p> 
-                     Through cutting-edge academic programs, we shape bright futures, fostering innovation and excellence in our vibrant university community.
+                     Through cutting-edge academic programs, we shape bright futures, fostering innovation and excellence in our vibrant Institute community.
                    </p>
 
                    <a href="#"
                       class="btn btn-inline">apply now</a>
-                </div>
-                <div class="banner-media">
-                   <a class="banner--media-video" target="_blank" data-autoplay="true"
-                      data-vbtype="video"
-                      href="#"><i
-                      class="fa-solid fa-play"></i></a>
-                   <div class="banner-media-content">
-                      <span>CIS University</span>
-                      <h3>Interactive Campus Exploration</h3>
-                      <p>Watch Video</p>
-
-                   </div>
                 </div>
              </div>
           </div>
@@ -41,21 +29,9 @@
                 <div class="banner-content">
                    <span>Community Bonds</span>
                    <h1>Innovative Education, Bright Futures</h1>
-                   <p>At our university, we offer groundbreaking academic programs, guiding students towards success and transformative learning experiences.</p>
+                   <p>At our Institute, we offer groundbreaking academic programs, guiding students towards success and transformative learning experiences.</p>
                    <a href="#"
                       class="btn btn-inline">apply now</a>
-                </div>
-                <div class="banner-media">
-                   <a class="banner--media-video" target="_blank" data-autoplay="true"
-                      data-vbtype="video"
-                      href="#"><i
-                      class="fa-solid fa-play"></i></a>
-                   <div class="banner-media-content">
-                      <span>CIS University</span>
-                      <h3>Personalized Guided Tours</h3>
-                      <p>Watch Video</p>
-
-                   </div>
                 </div>
              </div>
           </div>
@@ -69,20 +45,9 @@
                 <div class="banner-content">
                    <span>Spirit of Innovation</span>
                    <h1>Shaping Bright Futures Through Innovation</h1>
-                   <p>Explore our university's dynamic environment, where innovative academic programs inspire excellence, shaping promising futures for all students.</p>
+                   <p>Explore our Institute's dynamic environment, where innovative academic programs inspire excellence, shaping promising futures for all students.</p>
                    <a href="#"
                       class="btn btn-inline">apply now</a>
-                </div>
-                <div class="banner-media">
-                   <a class="banner--media-video" target="_blank" data-autoplay="true"
-                      data-vbtype="video"
-                      href="#"><i
-                      class="fa-solid fa-play"></i></a>
-                   <div class="banner-media-content">
-                      <span>CIS University</span>
-                      <h3>Virtual Campus Discovery</h3>
-                      <p>Watch Video</p>
-                   </div>
                 </div>
              </div>
           </div>
@@ -92,19 +57,19 @@
  <section class="feature-part">
     <div class="feature-card">
        <i class="lab-line-education"></i>
-       <p>Our institution offers Cambridge International Programs led by qualified, native English-speaking educators, ensuring top-tier language learning experiences.</p>
+       <p>Experience academic excellence with our comprehensive programs. Led by industry experts, we prepare you for success in today's competitive landscape.</p>
     </div>
     <div class="feature-card">
        <i class="lab-line-book"></i>
-       <p> Experience education in English with our Cambridge International Programs, facilitated by certified English-speaking instructors for unparalleled language mastery.</p>
+       <p>Explore a world of knowledge and opportunity. Our expert faculty and modern facilities ensure a transformative educational journey.</p>
     </div>
     <div class="feature-card">
        <i class="lab-line-notebook"></i>
-       <p>Engage with our Cambridge International Programs taught by native English speakers, fostering fluency and proficiency in an immersive learning environment.</p>
+       <p>Unlock endless possibilities with our dynamic learning environment. From technology to business, we empower you to thrive in diverse industries.</p>
     </div>
     <div class="feature-card">
        <i class="lab-line-certificate"></i>
-       <p>Immerse yourself in our Cambridge International Programs, guided by proficient, native English-speaking educators dedicated to your language mastery and academic success.</p>
+       <p>"Discover a world of opportunity and advancement. Our dedicated faculty and state-of-the-art resources ensure a transformative educational experience.</p>
     </div>
  </section>
  <section class="about-part">
@@ -112,9 +77,9 @@
        <div class="row">
           <div class="col-12 col-md-6 col-lg-5">
              <div class="about-content">
-                <h2 class="section-title">About University</h2>
+                <h2 class="section-title">About Institute</h2>
                 <p>
-                  CIS University stands as a beacon of academic excellence, fostering innovation and empowering students to thrive in a dynamic global landscape. Join us in shaping tomorrow's leaders through transformative education and impactful learning experiences &nbsp;                                ...                            
+                  CIS Institute stands as a beacon of academic excellence, fostering innovation and empowering students to thrive in a dynamic global landscape. Join us in shaping tomorrow's leaders through transformative education and impactful learning experiences &nbsp;                                ...                            
                 </p>
                 <a href="<?php echo e(route('site.about')); ?>" class="btn btn-outline">learn more</a>
              </div>
@@ -154,7 +119,7 @@
  <section class="event-part">
     <div class="container">
        <div class="section-head">
-          <h2 class="section-title">University Events</h2>
+          <h2 class="section-title">Institute Events</h2>
           <a href="<?php echo e(route('site.events')); ?>" class="section-btn">
           <span>View All Events</span>
           <i class="lni lni-arrow-right"></i>
@@ -189,7 +154,7 @@
                    href="#">Sports day</a>
                 </h4>
                 <h5>31 Dec, 2022-31 Dec, 2022                                    </h5>
-                <p>The 31 Annual State Championship showcases university-exclusive teams, gathering qualified squads from across...                                </p>
+                <p>The 31 Annual State Championship showcases Institute-exclusive teams, gathering qualified squads from across...                                </p>
                 <a class="view" href="#">
                 <span>View Event</span>
                 <i class="lni lni-arrow-right"></i>
@@ -203,10 +168,10 @@
              </a>
              <div class="event-content">
                 <h4><a
-                   href="#">University Meeting</a>
+                   href="#">Institute Meeting</a>
                 </h4>
                 <h5>31 Dec, 2022-31 Dec, 2022                                    </h5>
-                <p>The 11th Annual State Championship is a University-only tournament featuring qualified squads from all c...                                    </p>
+                <p>The 11th Annual State Championship is a Institute-only tournament featuring qualified squads from all c...                                    </p>
                 <a class="view" href="#">
                 <span>View Event</span>
                 <i class="lni lni-arrow-right"></i>
@@ -219,14 +184,14 @@
  <section class="social-part">
     <div class="social-overlay">
        <span></span>
-       <h2>The University Community</h2>
-       <p>Share your University pride with the world!</p>
+       <h2>The Institute Community</h2>
+       <p>Share your Institute pride with the world!</p>
        <nav>
           <a target="_blank" href="https://www.facebook.com/CIS.EDU1"
              class="lab-fill-facebook-round"></a>
-          <a target="_blank" href="#"
+          <a target="_blank" href="x.com"
              class="lab-fill-twitter-round"></a>
-          <a target="_blank" href="#"
+          <a target="_blank" href="linkedin.com.com"
              class="lab-fill-linkedin-round"></a>
           <a target="_blank" href="https://www.youtube.com/@CIS.EDU1"
              class="lab-fill-youtube-round"></a>
@@ -238,7 +203,7 @@
  <section class="gallery-part">
     <div class="container">
        <div class="section-head">
-          <h2 class="section-title">University’s Gallery</h2>
+          <h2 class="section-title">Institute’s Gallery</h2>
           <a href="<?php echo e(route('site.gallery')); ?>" class="section-btn">
           <span>see more</span>
           <i class="lni lni-arrow-right"></i>

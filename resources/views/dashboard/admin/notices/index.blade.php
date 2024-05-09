@@ -7,7 +7,7 @@
          <div class="col-xs-12">
             <div class="box">
                <div class="box-header">
-                  <h3 class="box-title"><i class="fa icon-envelope"></i> Notices</h3>
+                  <h3 class="box-title"><i class="fa fa-envelope"></i> Notices</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
                      <li class="active">Notices</li>
@@ -58,10 +58,10 @@
                                              <td>{{$notice->subject}}</td>
                                              <td>{{$notice->title}}</td>
                                              <td>
-                                                @can('Edit Notices')
+                                                @can('Edit Notice')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.notices.show', $notice->id)}}"><i class="fa fa-eye"></i></a>
                                                 @endcan
-                                                @can('delete Notices')
+                                                @can('Delete Notice')
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$notice->id}})"><i class="fa fa-trash"></i></a>
                                                 @endcan
                                              </td>

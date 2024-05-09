@@ -44,7 +44,7 @@
                            </li>
                            <li class="list-group-item" style="background-color: #FFF">
                               <b>Role</b> <a class="pull-right">
-                              {{$admin->role}}
+                              {{$admin->role_name}}
                               </a>
                            </li>
 
@@ -81,7 +81,7 @@
                                  </div>
                                  <div class="profile-view-tab">
                                     <p><span> Role </span>: 
-                                       {{$admin->role}}
+                                       {{$admin->role_name}}
                                     </p>  
                                  </div>
                                  

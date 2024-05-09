@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function MySupervisors(){
 
         $student = auth('student')->user();
-        $student = Student::where('supervisor_id','!=','null')->findOrFail($student->id);
+        $student = Student::findOrFail($student->id);
         $supervisors = Admin::where('id',$student->supervisor_id)->get();
 
         return view('dashboard.student.advising.supervisors', compact('student', 'supervisors'));

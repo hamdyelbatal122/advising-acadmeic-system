@@ -11,7 +11,7 @@ class NoticeController extends Controller
     public function index()
     {
         $student = auth('student')->user();
-        $notices = Notice::orderBy('id','desc')->orderBy('status','Asc')->where('student_id',$student->id)->get();
+        $notices = Notice::orderBy('status','Asc')->orderBy('id','desc')->where('student_id',$student->id)->get();
 
         return view('dashboard.student..notices.index', compact('notices'));
     }

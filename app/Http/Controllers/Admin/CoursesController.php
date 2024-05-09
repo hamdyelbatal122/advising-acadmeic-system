@@ -25,7 +25,7 @@ class CoursesController extends Controller
 
     public function create()
     {
-        $admins = Admin::where('role', 'professor')->get();
+        $admins = Admin::where('role_name', 'professor')->get();
         return view('dashboard.admin.courses.create', compact('admins'));
     }
 
@@ -51,7 +51,7 @@ class CoursesController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-        $admins = Admin::where('role', 'professor')->get();
+        $admins = Admin::where('role_name', 'Professor')->get();
         return view('dashboard.admin.courses.edit', compact('course', 'admins'));
     }
 
