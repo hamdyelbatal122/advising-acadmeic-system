@@ -50,6 +50,13 @@
                               {{$student->level}}
                               </a>
                            </li>
+                           @if($student->activeAdvising)
+                           <li class="list-group-item" style="background-color: #FFF">
+                              <b>Semester</b> <a class="pull-right">
+                                   {{$student->activeAdvising->semester}}
+                              </a>
+                           </li>
+                           @endif
                            <li class="list-group-item" style="background-color: #FFF">
                               <b>Section</b> <a class="pull-right">A</a>
                            </li>

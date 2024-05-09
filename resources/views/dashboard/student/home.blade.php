@@ -126,6 +126,15 @@
                                        <td>level</td>
                                        <td>Level {{$student->level}}</td>
                                     </tr>
+                                    @if($student->activeAdvising)
+                                    <tr>
+                                       <td>
+                                          <i class="fa-solid fa-code-branch text-maroon-light"></i>
+                                       </td>
+                                       <td>Semester</td>
+                                       <td> Semester {{$student->activeAdvising->semester}} </td>
+                                    </tr>
+                                    @endif
                                  </tbody>
                               </table>
                            </section>

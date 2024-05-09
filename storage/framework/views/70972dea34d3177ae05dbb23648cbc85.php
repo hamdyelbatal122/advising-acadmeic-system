@@ -121,6 +121,13 @@
                                        <td>level</td>
                                        <td>Level <?php echo e($student->level); ?></td>
                                     </tr>
+                                    <tr>
+                                       <td>
+                                          <i class="fa-solid fa-code-branch text-maroon-light"></i>
+                                       </td>
+                                       <td>Semester</td>
+                                       <td><?php if($student->activeAdvising): ?> Semester <?php echo e($student->activeAdvising->semester); ?> <?php endif; ?></td>
+                                    </tr>
                                  </tbody>
                               </table>
                            </section>
