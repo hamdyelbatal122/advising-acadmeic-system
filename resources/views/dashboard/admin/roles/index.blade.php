@@ -20,10 +20,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           @can('Add Role')
                            <a href="{{route('admin.roles.create')}}">
                            <i class="fa fa-plus"></i>
                            Add a Role                                
                            </a>
+                           @endcan
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -48,8 +50,12 @@
                                              <td>{{$role->name}}</td>
                                              <td>{{$role->guard_name}}</td>
                                              <td>
+                                                @can('Edit Role')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.roles.edit', $role->id)}}"><i class="fa fa-edit"></i></a>
+                                                @endcan
+                                                @can('Delete Role')
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$role->id}})"><i class="fa fa-trash"></i></a>
+                                                @endcan
                                              </td>
                                           </tr>
                                           @endforeach

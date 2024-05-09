@@ -170,9 +170,10 @@
                  <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('View Students')): ?>
                   <li <?php echo e(Request::is('*/students/*') ? 'class=active' : ''); ?>> <a href="<?php echo e(route('admin.students.index')); ?>"><i class="fa icon-student"></i><span>Students</span> </a></li>
                  <?php endif; ?>
+                 
+                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['View Courses', 'View Advisings', 'View Marks'])): ?>
 
                   <li class="treeview <?php echo e(Request::is('*/courses/*','*/advising/*','*/marks/*') ? 'active' : ''); ?>">
-
                      <a href="#"><i class="fa icon-academicmain"></i><span>Academic</span> <i class="fa fa-angle-left pull-right"></i></a>
 
                      <ul class="treeview-menu">
@@ -185,9 +186,11 @@
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('View Marks')): ?>
                         <li <?php echo e(Request::is('*/marks/*') ? 'class=active' : ''); ?>><a href="<?php echo e(route('admin.marks.index')); ?>" style="margin-left: 0px;"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                         <?php endif; ?>
-                     </ul>
-                     
+                     </ul>                     
                   </li>
+
+                  <?php endif; ?>
+
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('View Notices')): ?>
                         <li <?php echo e(Request::is('*/notices/*') ? 'class=active' : ''); ?>><a href="<?php echo e(route('admin.notices.index')); ?>"><i class="fa fa-envelope"></i><span>Notices</span> </a></li>
                         <?php endif; ?>

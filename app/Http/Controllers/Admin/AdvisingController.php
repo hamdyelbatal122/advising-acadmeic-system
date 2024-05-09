@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class AdvisingController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:View Advisings', ['only' => ['index','show']]);
+        $this->middleware('permission:Add Advising', ['only' => ['create','store']]);
+        $this->middleware('permission:Edit Advising', ['only' => ['edit','update']]);
+        $this->middleware('permission:Delete Advising', ['only' => ['delete']]);
+    }
+
     public function index($level = null)
     {
         if ($level) {

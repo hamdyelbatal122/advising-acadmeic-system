@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           @can('Add Advising')
                            <a href="{{route('admin.advising.create')}}">
                            <i class="fa fa-plus"></i>
                            Create Advising                                 
-                        </a>
+                           </a>
+                           @endcan
                            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
                               <select class="form-control " name="level_id" id="level_id">
                               <option value="">Select Level</option>
@@ -64,9 +66,15 @@
                                              <td>{{$advising->admin->name}}</td>
                                              <td>{{$advising->created_at}}</td>
                                              <td>
+                                                @can('View Advisings')
                                                 <a class="btn btn-info btn-sm" href="{{route('admin.advising.show', $advising->id)}}" target="_blank" ><i class="fa fa-eye"></i></a>
+                                                @endcan
+                                                @can('Edit Advising')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.advising.edit', $advising->id)}}"><i class="fa fa-edit"></i></a>
+                                                @endcan
+                                                @can('Delete Advising')
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$advising->id}})"><i class="fa fa-trash"></i></a>
+                                                @endcan
                                              </td>
                                           </tr>
                                           @endforeach

@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentsContoller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:View Students', ['only' => ['index','view']]);
+        $this->middleware('permission:Add Student', ['only' => ['create','store']]);
+        $this->middleware('permission:Edit Student', ['only' => ['edit','update']]);
+        $this->middleware('permission:Delete Student', ['only' => ['delete']]);
+    }
+
     public function index()
     {
         $students = Student::all();

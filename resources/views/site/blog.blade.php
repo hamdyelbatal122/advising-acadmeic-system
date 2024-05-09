@@ -42,7 +42,7 @@
                </a>
                <div class="blog-content">
                   <small>Nov 23, 2021</small>
-                  <h4><a href="#">Latest Industry News</a>
+                  <h4><a href="#">Self Study Exams News</a>
                   </h4>
                   <p>
                      You have your morning routine, just like I do. You skim the online news and find the latest trends in your industry. Why not make your morning routi..                                                                                    

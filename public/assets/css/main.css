@@ -595,7 +595,8 @@ select.form-control {
 }
 
 .teacher-avater {
-  width: 100%;
+  width: 250px;
+  height: 270px;
   transition: all linear 0.3s;
   -webkit-transition: all linear 0.3s;
   -moz-transition: all linear 0.3s;
@@ -682,7 +683,8 @@ select.form-control {
   overflow: hidden;
 }
 .event-media img {
-  width: 100%;
+  width: 332px;
+  height: 221px;
   transition: all linear 0.3s;
   -webkit-transition: all linear 0.3s;
   -moz-transition: all linear 0.3s;
@@ -996,7 +998,8 @@ select.form-control {
   }
 }
 .header-logo img {
-  width: 120px;
+  width: 80px;
+  height: 80px;
 }
 @media (max-width: 575px) {
   .header-logo img {

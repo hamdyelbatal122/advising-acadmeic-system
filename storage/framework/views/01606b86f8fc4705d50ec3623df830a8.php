@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Add Student')): ?>
                            <a href="<?php echo e(route('admin.students.create')); ?>">
                            <i class="fa fa-plus"></i>
                            Add a Student                                
                            </a>
+                           <?php endif; ?>
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -51,9 +53,15 @@
                                              <td><?php echo e($student->college); ?></td>
                                              <td><?php echo e($student->level); ?></td>
                                              <td>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('View Students')): ?>
                                                 <a class="btn btn-primary btn-sm" href="<?php echo e(route('admin.students.view', $student->id)); ?>"><i class="fa fa-eye"></i></a>
+                                                <?php endif; ?>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Edit Student')): ?>
                                                 <a class="btn btn-success btn-sm" href="<?php echo e(route('admin.students.edit', $student->id)); ?>"><i class="fa fa-edit"></i></a>
+                                                <?php endif; ?>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Delete Student')): ?>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow(<?php echo e($student->id); ?>)"><i class="fa fa-trash"></i></a>
+                                                <?php endif; ?>
                                              </td>
                                           </tr>
                                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

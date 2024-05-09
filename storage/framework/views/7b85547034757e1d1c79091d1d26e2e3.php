@@ -21,12 +21,24 @@
                      <div class="col-sm-10">
                         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" id="add" >
                            <?php echo csrf_field(); ?>
+
                            <div class="form-group">
                               <label for="name_id" class="col-sm-2 control-label">
                               Name <span class="text-red">*</span>
                               </label>
                               <div class="col-sm-6">
                                  <input type="text" class="form-control" id="name_id" name="name" value="" placeholder="Name" >
+                              </div>
+                              <span class="col-sm-4 control-label">
+                              </span>
+                           </div>
+
+                           <div class="form-group">
+                              <label for="name_id" class="col-sm-2 control-label">
+                              Full Name <span class="text-red">*</span>
+                              </label>
+                              <div class="col-sm-6">
+                                 <input type="text" class="form-control" id="full_name" name="full_name"  placeholder="Full Name">
                               </div>
                               <span class="col-sm-4 control-label">
                               </span>
@@ -76,6 +88,17 @@
                                     <option value="<?php echo e($role->name); ?>"><?php echo e($role->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                  </select>
+                              </div>
+                              <span class="col-sm-4 control-label">
+                              </span>
+                           </div>
+
+                           <div class="form-group">
+                              <label for="image" class="col-sm-2 control-label">
+                              Image <span class="text-red">*</span>
+                              </label>
+                              <div class="col-sm-6">
+                                 <input type="file" class="form-control" id="image" name="image"  placeholder="image">
                               </div>
                               <span class="col-sm-4 control-label">
                               </span>

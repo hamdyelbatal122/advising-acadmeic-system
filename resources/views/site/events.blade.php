@@ -96,7 +96,7 @@
                <img src=" {{asset('assets/images/site/events/96741e31bb3519ba263ee9900d9e262c1ebd817440fd94d12d4a47a627a4528ff59bcf33b8b999d2a825223c2957581fd5ad6a7666641bdea1555ff5c4e69b3e.jpg')}}" alt="event">
                </a>
                <div class="event-content">
-                  <h4><a href="#">Mid Year Picnic</a>
+                  <h4><a href="#">Reception of the Quality Committee</a>
                   </h4>
                   <h5>31 Dec, 2022 -
                      31 Dec, 2022
@@ -117,7 +117,7 @@
                <img src=" {{asset('assets/images/site/events/1a7e09950c35cebdbb501d34b254baf777d00f97bdda213626fd235c597640e910e5047e07d4b02a2672047287ba9cdaae110216b9691cb8b89fe5b415a1f844.jpg')}}" alt="event">
                </a>
                <div class="event-content">
-                  <h4><a href="#">Basketball Tournament</a>
+                  <h4><a href="#">Student Honoring Ceremony</a>
                   </h4>
                   <h5>03 Aug, 2022 -
                      04 Aug, 2022

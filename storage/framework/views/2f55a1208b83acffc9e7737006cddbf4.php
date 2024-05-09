@@ -20,10 +20,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Add Role')): ?>
                            <a href="<?php echo e(route('admin.roles.create')); ?>">
                            <i class="fa fa-plus"></i>
                            Add a Role                                
                            </a>
+                           <?php endif; ?>
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -48,8 +50,12 @@
                                              <td><?php echo e($role->name); ?></td>
                                              <td><?php echo e($role->guard_name); ?></td>
                                              <td>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Edit Role')): ?>
                                                 <a class="btn btn-success btn-sm" href="<?php echo e(route('admin.roles.edit', $role->id)); ?>"><i class="fa fa-edit"></i></a>
+                                                <?php endif; ?>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Delete Role')): ?>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow(<?php echo e($role->id); ?>)"><i class="fa fa-trash"></i></a>
+                                                <?php endif; ?>
                                              </td>
                                           </tr>
                                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

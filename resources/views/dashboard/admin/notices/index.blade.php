@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           @can('Add Notice')
                            <a href="{{route('admin.notices.create')}}">
                            <i class="fa fa-plus"></i>
                            Add a Notice                                
                            </a>
+                           @endcan
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -56,8 +58,12 @@
                                              <td>{{$notice->subject}}</td>
                                              <td>{{$notice->title}}</td>
                                              <td>
+                                                @can('Edit Notices')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.notices.show', $notice->id)}}"><i class="fa fa-eye"></i></a>
+                                                @endcan
+                                                @can('delete Notices')
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$notice->id}})"><i class="fa fa-trash"></i></a>
+                                                @endcan
                                              </td>
                                           </tr>
                                           @endforeach

@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           @can('Add Course')
                            <a href="{{route('admin.courses.create')}}">
                            <i class="fa fa-plus"></i>
                            Add a course                                
                            </a>
+                           @endcan
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -51,8 +53,12 @@
                                              <td>{{$course->professor->name}}</td>
                                              <td>{{$course->hours}}</td>
                                              <td>
+                                                @can('Edit Course')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.courses.edit', $course->id)}}"><i class="fa fa-edit"></i></a>
+                                                @endcan
+                                                @can('Delete Course')
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$course->id}})"><i class="fa fa-trash"></i></a>
+                                                @endcan
                                              </td>
                                           </tr>
                                           @endforeach

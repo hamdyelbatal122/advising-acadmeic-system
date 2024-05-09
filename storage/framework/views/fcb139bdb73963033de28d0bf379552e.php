@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Add Admin')): ?>
                            <a href="<?php echo e(route('admin.users.create')); ?>">
                            <i class="fa fa-plus"></i>
                            Add a User                                
                            </a>
+                           <?php endif; ?>
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -37,7 +39,6 @@
                                              <th>#</th>
                                              <th>Name</th>
                                              <th>Email</th>
-                                             <th>Profession</th>
                                              <th>Role</th>
                                              <th>Action</th>
                                           </tr>
@@ -48,11 +49,14 @@
                                              <td><?php echo e($loop->iteration); ?></td>
                                              <td><?php echo e($user->name); ?></td>
                                              <td><?php echo e($user->email); ?></td>
-                                             <td><?php echo e($user->profession); ?></td>
                                              <td><?php echo e($user->role_name); ?></td>
                                              <td>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Edit Admin')): ?>
                                                 <a class="btn btn-success btn-sm" href="<?php echo e(route('admin.users.edit', $user->id)); ?>"><i class="fa fa-edit"></i></a>
+                                                <?php endif; ?>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Delete Admin')): ?>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow(<?php echo e($user->id); ?>)"><i class="fa fa-trash"></i></a>
+                                                <?php endif; ?>
                                              </td>
                                           </tr>
                                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

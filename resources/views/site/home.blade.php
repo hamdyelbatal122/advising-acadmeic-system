@@ -124,20 +124,20 @@
              <div class="about-media">
                 <img src="{{asset('assets/images/site/about.jpg')}}"
                    alt="about">
-                <ul class="about-list">
-                   <li class="about-item">
-                      <h4><span class="counter">412</span>+</h4>
-                      <p>Professor</p>
-                   </li>
-                   <li class="about-item">
-                      <h4><span class="counter">974K</span>+</h4>
-                      <p>students</p>
-                   </li>
-                   <li class="about-item">
-                      <h4><span class="counter">213K</span>+</h4>
-                      <p>graduates</p>
-                   </li>
-                </ul>
+                   <ul class="about-list">
+                     <li class="about-item">
+                        <h4><span class="counter">{{$professors_count}}</span>+</h4>
+                        <p>Professor</p>
+                     </li>
+                     <li class="about-item">
+                        <h4><span class="counter">{{$students_count}}</span>+</h4>
+                        <p>Students</p>
+                     </li>
+                     <li class="about-item">
+                        <h4><span class="counter">{{$graduation_count}}</span>+</h4>
+                        <p>Graduates</p>
+                     </li>
+                  </ul>
              </div>
           </div>
        </div>
@@ -169,7 +169,7 @@
              </a>
              <div class="event-content">
                 <h4><a
-                   href="#">Mid Year Picnic</a>
+                   href="#">Reception of the Quality Committee</a>
                 </h4>
                 <h5>31 Dec, 2022-31 Dec, 2022                                    </h5>
                 <p>

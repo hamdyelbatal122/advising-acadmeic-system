@@ -169,9 +169,10 @@
                  @can('View Students')
                   <li {{Request::is('*/students/*') ? 'class=active' : ''}}> <a href="{{route('admin.students.index')}}"><i class="fa icon-student"></i><span>Students</span> </a></li>
                  @endcan
+                 
+                 @canAny(['View Courses', 'View Advisings', 'View Marks'])
 
                   <li class="treeview {{Request::is('*/courses/*','*/advising/*','*/marks/*') ? 'active' : ''}}">
-
                      <a href="#"><i class="fa icon-academicmain"></i><span>Academic</span> <i class="fa fa-angle-left pull-right"></i></a>
 
                      <ul class="treeview-menu">
@@ -184,9 +185,11 @@
                         @can('View Marks')
                         <li {{Request::is('*/marks/*') ? 'class=active' : ''}}><a href="{{route('admin.marks.index')}}" style="margin-left: 0px;"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                         @endcan
-                     </ul>
-                     
+                     </ul>                     
                   </li>
+
+                  @endcanAny
+
                         @can('View Notices')
                         <li {{Request::is('*/notices/*') ? 'class=active' : ''}}><a href="{{route('admin.notices.index')}}"><i class="fa fa-envelope"></i><span>Notices</span> </a></li>
                         @endcan

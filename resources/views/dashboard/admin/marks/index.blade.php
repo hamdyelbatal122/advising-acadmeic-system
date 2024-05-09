@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           @can('Add Mark')
                            <a href="{{route('admin.marks.create')}}">
                            <i class="fa fa-plus"></i>
                            Create Mark                                 
-                        </a>
+                           </a>
+                           @endcan
                            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 pull-right drop-marg">
                               <select class="form-control " name="level_id" id="level_id">
                               <option value="">Select Level</option>
@@ -63,8 +65,12 @@
                                              <td>{{$advising->admin->name}}</td>
 
                                              <td>
+                                                @can('View Marks')
                                                 <a class="btn btn-info btn-sm" href="{{route('admin.marks.show', $advising->id)}}" target="_blank" ><i class="fa fa-eye"></i></a>
+                                                @endcan
+                                                @can('Edit Mark')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.marks.edit', $advising->id)}}"><i class="fa fa-edit"></i></a>
+                                                @endcan
                                              </td>
                                           </tr>
                                           @endforeach

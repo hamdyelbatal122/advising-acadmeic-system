@@ -25,7 +25,9 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'full_name',
         'email',
+        'image',
         'profession',
         'role_name',
         'password',
@@ -60,5 +62,19 @@ class Admin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getImageAttribute($value)
+    {
+        if(empty($value)){
+
+        return asset('assets/images/default.png');
+
+        }else{
+
+        return asset($value);
+
+        }
+
     }
 }

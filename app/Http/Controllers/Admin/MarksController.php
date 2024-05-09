@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class MarksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:View Marks', ['only' => ['index','view']]);
+        $this->middleware('permission:Add Mark', ['only' => ['create','store']]);
+        $this->middleware('permission:Edit Mark', ['only' => ['edit','update']]);
+        $this->middleware('permission:Delete Mark', ['only' => ['delete']]);
+    }
+
     public function index($level = null)
     {
         if ($level) {

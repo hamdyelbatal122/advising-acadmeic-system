@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Traits\ImageTrait;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,15 @@ use Spatie\Permission\Models\Role;
 
 class UsersContoller extends Controller
 {
+    use ImageTrait;
+    public function __construct()
+    {
+        $this->middleware('permission:View Admins', ['only' => ['index']]);
+        $this->middleware('permission:Add Admin', ['only' => ['create','store']]);
+        $this->middleware('permission:Edit Admin', ['only' => ['edit','update']]);
+        $this->middleware('permission:Delete Admin', ['only' => ['delete']]);
+    }
+
     public function index()
     {
         $users = Admin::where('id', '!=', auth('admin')->id())->get();
@@ -24,15 +34,22 @@ class UsersContoller extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+     $data =  $request->validate([
             'name' => 'required',
+            'full_name' => 'required',
             'email' => 'required|email|unique:admins',
             'profession' => 'required',
             'role_name' => 'required',
             'password' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $admin = Admin::create($request->all());
+        if($request->hasFile('image')){
+            $image = $this->saveImage($request->image,'/uploads/admins/');
+            $data['image'] = $image;
+        }
+
+        $admin = Admin::create($data);
         $admin->assignRole($request->role_name);
 
         return response()->json(['status'=>true,'message' => 'User created successfully']);
@@ -48,24 +65,31 @@ class UsersContoller extends Controller
     public function update(Request $request)
     {
         
-        $request->validate([
+      $data = $request->validate([
             'name' => 'required',
+            'full_name' => 'required',
             'email' => 'required|email|unique:admins,email,'.$request->id,
             'profession' => 'required',
             'role_name' => 'required',
             'password' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if($request->hasFile('image')){
+            $image = $this->saveImage($request->image,'/uploads/admins/');
+            $data['image'] = $image;
+        }
 
         $admin = Admin::findOrFail($request->id);
         
-        if($request->password == null){
-            $request->request->remove('password');
+        if($request->password){
+            $data['password'] = Hash::make($request->password);
         }else{
-            $request->password = Hash::make($request->password);
-        
+            unset($data['password']);
         }
+
         $admin->syncRoles($request->role_name);
-        $admin->update($request->all());
+        $admin->update($data);
 
         return response()->json(['status'=>true,'message' => 'User updated successfully']);
     }

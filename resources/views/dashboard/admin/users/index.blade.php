@@ -19,10 +19,12 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <h5 class="page-header">
+                           @can('Add Admin')
                            <a href="{{route('admin.users.create')}}">
                            <i class="fa fa-plus"></i>
                            Add a User                                
                            </a>
+                           @endcan
                         </h5>
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
@@ -37,7 +39,6 @@
                                              <th>#</th>
                                              <th>Name</th>
                                              <th>Email</th>
-                                             <th>Profession</th>
                                              <th>Role</th>
                                              <th>Action</th>
                                           </tr>
@@ -48,11 +49,14 @@
                                              <td>{{ $loop->iteration }}</td>
                                              <td>{{$user->name}}</td>
                                              <td>{{$user->email}}</td>
-                                             <td>{{$user->profession}}</td>
                                              <td>{{$user->role_name}}</td>
                                              <td>
+                                                @can('Edit Admin')
                                                 <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
+                                                @endcan
+                                                @can('Delete Admin')
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow({{$user->id}})"><i class="fa fa-trash"></i></a>
+                                                @endcan
                                              </td>
                                           </tr>
                                           @endforeach

@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class NoticeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:View Notices', ['only' => ['index','show']]);
+        $this->middleware('permission:Add Notice', ['only' => ['create','store']]);
+        $this->middleware('permission:Edit Notice', ['only' => ['reply','send']]);
+        $this->middleware('permission:Delete Notice', ['only' => ['delete']]);
+    }
     
 
     public function index()
