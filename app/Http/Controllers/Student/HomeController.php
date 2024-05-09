@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Advising;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -28,13 +29,23 @@ class HomeController extends Controller
     {
         $student = auth('student')->user();
         $student = Student::findOrFail($student->id);
+        $supervisor = $student->supervisor_id ? 1 : 0;
         $notices = $student->notices()->latest()->orderBy('id','desc')->limit(5)->get();
         if ($student->activeAdvising) {
             $courses = $student->activeAdvising->courses->load('course')->load('course.professor')->count();
         } else {
             $courses = 0;
         }
-        return view('dashboard.student.home', compact('student', 'notices', 'courses'));
+        return view('dashboard.student.home', compact('student', 'notices', 'courses', 'supervisor'));
+    }
+
+    public function MySupervisors(){
+
+        $student = auth('student')->user();
+        $student = Student::where('supervisor_id','!=','null')->findOrFail($student->id);
+        $supervisors = Admin::where('id',$student->supervisor_id)->get();
+
+        return view('dashboard.student.advising.supervisors', compact('student', 'supervisors'));
     }
 
     public function PrintAdvising($id)

@@ -17,7 +17,7 @@ class NoticeController extends Controller
     }
 
     public function create()
-    {
+    {   
         return view('dashboard.student.notices.create');
     }
 

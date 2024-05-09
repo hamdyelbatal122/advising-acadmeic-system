@@ -189,6 +189,18 @@
                               </div>
                               <span class="col-sm-4 control-label"></span>
                            </div>
+                           <div class="form-group">
+                              <label for="supervisor_id" class="col-sm-2 control-label">Supervisor</label>
+                              <div class="col-sm-6">
+                                 <select  class="form-control" id="supervisor_id" name="supervisor_id">
+                                    <option value="">Select supervisor</option>
+                                    @foreach($supervisors as $supervisor)
+                                    <option value="{{$supervisor->id}}" @if($student->supervisor_id == $supervisor->id) selected @endif>{{$supervisor->name}}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                              <span class="col-sm-4 control-label"></span>
+                           </div>
                            <!-- GPA -->
                            <div class="form-group">
                               <label for="gpa" class="col-sm-2 control-label">GPA <span class="text-red">*</span></label>

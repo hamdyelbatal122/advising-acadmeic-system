@@ -12,13 +12,13 @@
 
                         <div class="col-lg-3 col-xs-6">
                            <div class="small-box ">
-                              <a class="small-box-footer bg-orange-dark" href="#">
+                              <a class="small-box-footer bg-orange-dark" href="<?php echo e(route('student.supervisor')); ?>">
                                  <div class="icon bg-orange-dark" style="padding: 9.5px 18px 6px 18px;">
                                     <i class="fa icon-teacher"></i>
                                  </div>
                                  <div class="inner ">
                                     <h3 class="text-white">
-                                       0                          
+                                       <?php echo e($supervisor); ?>                          
                                     </h3>
                                     <p class="text-white">
                                        Supervisors                            
@@ -121,13 +121,15 @@
                                        <td>level</td>
                                        <td>Level <?php echo e($student->level); ?></td>
                                     </tr>
+                                    <?php if($student->activeAdvising): ?>
                                     <tr>
                                        <td>
                                           <i class="fa-solid fa-code-branch text-maroon-light"></i>
                                        </td>
                                        <td>Semester</td>
-                                       <td><?php if($student->activeAdvising): ?> Semester <?php echo e($student->activeAdvising->semester); ?> <?php endif; ?></td>
+                                       <td> Semester <?php echo e($student->activeAdvising->semester); ?> </td>
                                     </tr>
+                                    <?php endif; ?>
                                  </tbody>
                               </table>
                            </section>

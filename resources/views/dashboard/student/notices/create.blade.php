@@ -20,7 +20,7 @@
                      <div class="col-sm-12">
                         <form class="form-horizontal" role="form" method="post" id="add">
                            @csrf
-                           <input name="student_id" type="hidden" value="{{auth()->user()->id}}">
+                           <input name="student_id" type="hidden" value="{{auth('student')->user()}}">
 
                            <div class="form-group">
                               <label for="title" class="col-sm-1 control-label">

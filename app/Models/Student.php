@@ -37,6 +37,7 @@ class Student extends Authenticatable
         'college',
         'level',
         'gpa',
+        'supervisor_id',
         'password',
         'currant_password',
     ];
@@ -94,5 +95,7 @@ class Student extends Authenticatable
     {
         return $this->hasMany(Notice::class, 'student_id', 'id');
     }
+
+
 
 }

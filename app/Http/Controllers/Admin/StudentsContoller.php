@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -63,7 +64,8 @@ class StudentsContoller extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-        return view('dashboard.admin.students.edit', compact('student'));
+        $supervisors = Admin::where('role_name','supervisor')->get();
+        return view('dashboard.admin.students.edit', compact('student','supervisors'));
     }
 
     public function update(Request $request)
@@ -85,6 +87,7 @@ class StudentsContoller extends Controller
             'college' => 'required',
             'level' => 'required',
             'gpa' => 'required|numeric',
+            'supervisor_id' => 'nullable',
             'password' => 'nullable|min:8',
             'currant_password' => 'nullable',
         ]);

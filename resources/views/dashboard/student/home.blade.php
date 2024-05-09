@@ -17,13 +17,13 @@
 
                         <div class="col-lg-3 col-xs-6">
                            <div class="small-box ">
-                              <a class="small-box-footer bg-orange-dark" href="#">
+                              <a class="small-box-footer bg-orange-dark" href="{{route('student.supervisor')}}">
                                  <div class="icon bg-orange-dark" style="padding: 9.5px 18px 6px 18px;">
                                     <i class="fa icon-teacher"></i>
                                  </div>
                                  <div class="inner ">
                                     <h3 class="text-white">
-                                       0                          
+                                       {{$supervisor}}                          
                                     </h3>
                                     <p class="text-white">
                                        Supervisors                            
