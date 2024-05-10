@@ -53,6 +53,8 @@ class Student extends Authenticatable
     ];
 
 
+    protected $appends = ['credit_hours_available'];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -96,6 +98,28 @@ class Student extends Authenticatable
         return $this->hasMany(Notice::class, 'student_id', 'id');
     }
 
+    public function getCreditHoursAvailableAttribute()
+    {
+        $gpa = $this->gpa;
+        $level = $this->level;
+        $lastAdvising = $this->lastAdvising;
+        
+        if ($level == 1 && $gpa == 0 && empty($lastAdvising) || $gpa >= 2) {
+
+            return 15;
+
+        }elseif( $gpa < 2 && $gpa > 1 ){
+
+        return 12;
+
+        }elseif( $gpa <= 1 ){
+
+        return 9;
+
+         }else{
+            return 0;
+         }
 
 
+    }
 }

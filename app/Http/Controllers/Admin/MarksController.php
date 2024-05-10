@@ -68,6 +68,8 @@ class MarksController extends Controller
             $mark->grade = $request->grade[$key];
             $mark->save();
         }
+        $gpa_for_currant_mark =  $this->calculateGPA($advising);
+        $student->update(['gpa' => $student->gpa+$gpa_for_currant_mark]);
 
         $advising->status = 'completed';
         $advising->save();
@@ -113,5 +115,17 @@ class MarksController extends Controller
         $courses = $advising->marks->load('course');     
         $student = Student::findOrFail($advising->student_id);   
         return view('dashboard.admin.marks.view', compact('student', 'courses', 'advising'));
+    }
+
+    public function calculateGPA($advising)
+    {
+        $advising = Advising::findOrFail($advising->id);
+        $marks = $advising->marks;
+        $gpa_of_course = 0;
+        foreach ($marks as $mark) {
+            $gpa_of_course += $mark->mark;  
+        }
+      return  $gpa_of_advising = $gpa_of_course / $marks->count();
+
     }
 }

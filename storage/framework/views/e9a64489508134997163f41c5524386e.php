@@ -53,6 +53,14 @@
 
                               </a>
                            </li>
+                           <?php if($student->activeAdvising): ?>
+                           <li class="list-group-item" style="background-color: #FFF">
+                              <b>Semester</b> <a class="pull-right">
+                                   <?php echo e($student->activeAdvising->semester); ?>
+
+                              </a>
+                           </li>
+                           <?php endif; ?>
                            <li class="list-group-item" style="background-color: #FFF">
                               <b>Section</b> <a class="pull-right">A</a>
                            </li>

@@ -50,6 +50,7 @@
                                              <th>Level</th>
                                              <th>Semster </th>
                                              <th>Year</th>
+                                             <td>Status</td>
                                              <td>Created By</td>
                                              <th>Created At</th>
                                              <th>Action</th>
@@ -63,17 +64,25 @@
                                              <td><?php echo e($advising->level); ?></td>
                                              <td><?php echo e($advising->semster); ?></td>
                                              <td><?php echo e($advising->year); ?></td>
+                                             <td>
+                                                <?php if($advising->status == "active"): ?>
+                                                <span class="label label-primary">Active</span>
+                                                <?php else: ?>
+                                                <span class="label label-success">Completed</span>
+                                                <?php endif; ?>
                                              <td><?php echo e($advising->admin->name); ?></td>
                                              <td><?php echo e($advising->created_at); ?></td>
                                              <td>
                                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('View Advisings')): ?>
                                                 <a class="btn btn-info btn-sm" href="<?php echo e(route('admin.advising.show', $advising->id)); ?>" target="_blank" ><i class="fa fa-eye"></i></a>
                                                 <?php endif; ?>
+                                                <?php if($advising->status == "active"): ?>
                                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Edit Advising')): ?>
                                                 <a class="btn btn-success btn-sm" href="<?php echo e(route('admin.advising.edit', $advising->id)); ?>"><i class="fa fa-edit"></i></a>
                                                 <?php endif; ?>
                                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Delete Advising')): ?>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow(<?php echo e($advising->id); ?>)"><i class="fa fa-trash"></i></a>
+                                                <?php endif; ?>
                                                 <?php endif; ?>
                                              </td>
                                           </tr>

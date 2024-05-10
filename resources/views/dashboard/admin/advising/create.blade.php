@@ -59,7 +59,7 @@
                                  <select class="form-control " name="course" id="course">
                                     <option value="">Select Course</option>
                                     @foreach($courses as $course)
-                                    <option value="{{$course->id}}" data-professor="{{$course->professor->name}}" data-code="{{$course->code}}"> {{$course->name}}</option>
+                                    <option value="{{$course->id}}" data-professor="{{$course->professor->name}}" data-code="{{$course->code}}" data-hours="{{$course->hours}}"> {{$course->name}}</option>
                                     @endforeach
                                  </select>
                               </div>
@@ -86,13 +86,14 @@
                                        <tr>
                                           <th>Course</th>
                                           <th>Code</th>
+                                          <th>Credit Hours</th>
                                           <th>Professor</th>
                                           <th>Actions</th>
                                        </tr>
                                     </thead>
                                     <tbody>
                                        <tr id="noDataTr">
-                                          <td colspan="4" align="center">No Course Chosen</td>
+                                          <td colspan="5" align="center">No Course Chosen</td>
                                        </tr>
                                     </tbody>
                                  </table>
@@ -203,6 +204,7 @@ $.ajax({
       return;
     }
     var course_name = $("#course option:selected").text();
+    var course_hours = $("#course option:selected").attr('data-hours');
     var course_code = $("#course option:selected").attr('data-code');
     var course_professor = $("#course option:selected").attr('data-professor');
 
@@ -218,6 +220,7 @@ $.ajax({
     var append = '<tr id="course-'+course_id+'">';
     append += '<td>'+course_name+'</td>';
     append += '<td>'+course_code+'</td>';
+    append += '<td>'+course_hours+'</td>';
     append += '<td>'+course_professor+'</td>';
     append += '<td><button id="removeCourse" type="button" class="btn btn-danger" onclick="deleteRow('+course_id+')">Delete</button></td>';
     append += '</tr>';
@@ -232,7 +235,7 @@ $.ajax({
     $('#course-'+id).remove();
 
     if ($('#table tbody').children().length === 0) {
-         $('#table tbody').append('<tr id="noDataTr"><td colspan="4" align="center">No Course Chosen</td></tr>');
+         $('#table tbody').append('<tr id="noDataTr"><td colspan="5" align="center">No Course Chosen</td></tr>');
     }
    }
 

@@ -43,6 +43,7 @@ class AdvisingController extends Controller
             'semester' => 'required',
         ]);
 
+        $student = Student::find($request->student_id);
         $courses = collect(json_decode($request->courses));
 
         
@@ -51,7 +52,12 @@ class AdvisingController extends Controller
             return response()->json(['status'=>false,'message' => 'Please select courses']);
         }
 
-        $student = Student::find($request->student_id);
+        $courses_hours = $this->getCourseHours($courses);
+
+        if (!$student->credit_hours_available == $courses_hours ) {
+            return response()->json(['status'=>false,'message' => 'The total hours of the courses must be '.$student->credit_hours_available]);
+        }
+
         $student_advising  = $student->advising()->where('status','active')->get();
         $student_advising_in_this_semester = $student->advising()->where('semester',$request->semester)->where('status','completed')->get();
 
@@ -153,5 +159,16 @@ class AdvisingController extends Controller
         $student = Student::find($request->student_id);
         return response()->json(['status'=>true,'data' => $student]);
     }
+
+    public function getCourseHours($courses)
+    {
+        $hours = 0;
+        foreach($courses as $course){
+            $course = Course::find($course);
+            $hours += $course->hours;
+        }
+        return $hours;
+    }
+
 
 }

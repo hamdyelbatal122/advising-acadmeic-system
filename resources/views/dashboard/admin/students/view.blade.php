@@ -11,7 +11,7 @@
                   <button class="btn-cs btn-sm-cs" onclick="printDiv('printablediv')"><span class="fa fa-print"></span> Print </button>
                   <button class="btn-cs btn-sm-cs" data-toggle="modal" data-target="#mail"><i class="fa-regular fa-envelope"></i> Send PDF To Mail</button>
                   @if($student->activeAdvising)
-                  <a href="{{route('student.advising.print',$student->activeAdvising)}}"><button class="btn-cs btn-sm-cs"><i class="fa-solid fa-paperclip"></i> Active Advising For This Student</button></a>
+                  <a href="{{route('admin.advising.show',$student->activeAdvising)}}"><button class="btn-cs btn-sm-cs"><i class="fa-solid fa-paperclip"></i> Active Advising For This Student</button></a>
                   @endif
                </div>
                <div class="col-sm-6">

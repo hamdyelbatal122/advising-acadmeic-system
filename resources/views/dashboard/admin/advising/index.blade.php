@@ -50,6 +50,7 @@
                                              <th>Level</th>
                                              <th>Semster </th>
                                              <th>Year</th>
+                                             <td>Status</td>
                                              <td>Created By</td>
                                              <th>Created At</th>
                                              <th>Action</th>
@@ -63,6 +64,12 @@
                                              <td>{{$advising->level}}</td>
                                              <td>{{$advising->semster}}</td>
                                              <td>{{$advising->year}}</td>
+                                             <td>
+                                                @if($advising->status == "active")
+                                                <span class="label label-primary">Active</span>
+                                                @else
+                                                <span class="label label-success">Completed</span>
+                                                @endif
                                              <td>{{$advising->admin->name}}</td>
                                              <td>{{$advising->created_at}}</td>
                                              <td>
