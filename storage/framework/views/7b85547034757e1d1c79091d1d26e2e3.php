@@ -95,7 +95,7 @@
 
                            <div class="form-group">
                               <label for="image" class="col-sm-2 control-label">
-                              Image <span class="text-red">*</span>
+                              Image 
                               </label>
                               <div class="col-sm-6">
                                  <input type="file" class="form-control" id="image" name="image"  placeholder="image">

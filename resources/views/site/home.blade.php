@@ -115,7 +115,7 @@
          <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(-2872px, 0px, 0px); transition: all 1s ease 0s; width: 8616px;">
                @foreach($professors as $professor)
-               <div class="owl-item cloned" style="width: 329px; margin-right: 30px;">
+               <div class="owl-item" style="width: 329px; margin-right: 30px;">
                   <div class="teacher-card">
                      <div class="teacher-media">
                         <img class="teacher-avater" src="{{$professor->image}}" >
