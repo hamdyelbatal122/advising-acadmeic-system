@@ -14,7 +14,8 @@ class HomeContoller extends Controller
         $students_count = Student::count();
         $professors_count = Admin::count();
         $graduation_count = 500; 
-        return view('site.home', compact('students_count', 'professors_count', 'graduation_count'));
+        $professors = Admin::orderBy('id','ASC')->limit(14)->get();
+        return view('site.home', compact('students_count', 'professors_count', 'graduation_count', 'professors'));
     }
 
     public function contact()

@@ -12,9 +12,9 @@
                   <div class="teacher-media">
                      <img class="teacher-avater" src="{{$professor->image}}">
                      <div class="teacher-overlay">
-                        <a target="_blank" href="#" class="lab-fill-facebook-round"></a>
-                        <a target="_blank" href="#" class="lab-fill-twitter-round"></a>
-                        <a target="_blank" href="#" class="lab-fill-linkedin-round"></a>
+                        <a  href="#" class="lab-fill-facebook-round"></a>
+                        <a  href="#" class="lab-fill-twitter-round"></a>
+                        <a  href="#" class="lab-fill-linkedin-round"></a>
                      </div>
                   </div>
                   <div class="teacher-meta">
