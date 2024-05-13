@@ -26,7 +26,7 @@
             <div class="banner-group">
                <div class="banner-content">
                   <span>Community Bonds</span>
-                  <h1>Innovative Education, Bright Futures</h1>
+                  <h1>Innovative Education Bright Futures</h1>
                   <p>At our Institute, we offer groundbreaking academic programs, guiding students towards success and transformative learning experiences.</p>
                   <a href="#"
                      class="btn btn-inline">apply now</a>
@@ -43,7 +43,7 @@
                <div class="banner-content">
                   <span>Spirit of Innovation</span>
                   <h1>Shaping Bright Futures Through Innovation</h1>
-                  <p>Explore our Institute's dynamic environment, where innovative academic programs inspire excellence, shaping promising futures for all students.</p>
+                  <p>Discover the pulsating heart of our institute, where avant garde academic initiatives fuel greatness, crafting promising destinies for every student.</p>
                   <a href="#"
                      class="btn btn-inline">apply now</a>
                </div>
@@ -55,7 +55,7 @@
 <section class="feature-part">
    <div class="feature-card">
       <i class="lab-line-education"></i>
-      <p>Experience academic excellence with our comprehensive programs. Led by industry experts, we prepare you for success in today's competitive landscape.</p>
+      <p>Experience academic excellence with our comprehensive programs. Led by industry experts.</p>
    </div>
    <div class="feature-card">
       <i class="lab-line-book"></i>
@@ -63,11 +63,11 @@
    </div>
    <div class="feature-card">
       <i class="lab-line-notebook"></i>
-      <p>Unlock endless possibilities with our dynamic learning environment. From technology to business, we empower you to thrive in diverse industries.</p>
+      <p>Open the door to limitless possibilities in our dynamic learning environment. From technology to business.</p>
    </div>
    <div class="feature-card">
       <i class="lab-line-certificate"></i>
-      <p>Discover a world of opportunity and advancement. Our dedicated faculty and state-of-the-art resources ensure a transformative educational experience.</p>
+      <p>Embark on a journey into a realm overflowing with potential and personal growth. Guided by our devoted faculty and unparalleled resources.</p>
    </div>
 </section>
 <section class="about-part">
@@ -77,7 +77,7 @@
             <div class="about-content">
                <h2 class="section-title">About Institute</h2>
                <p>
-                  CIS Institute stands as a beacon of academic excellence, fostering innovation and empowering students to thrive in a dynamic global landscape. Join us in shaping tomorrow's leaders through transformative education and impactful learning experiences &nbsp;                                ...                            
+                  CIS Institute stands as a beacon of academic excellence, fostering innovation and empowering students to thrive  dynamic global landscape. Join us in shaping tomorrow's leaders through transformative education and impactful learning experiences &nbsp;                                ...                            
                </p>
                <a href="<?php echo e(route('site.about')); ?>" class="btn btn-outline">learn more</a>
             </div>

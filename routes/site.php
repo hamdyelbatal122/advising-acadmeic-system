@@ -28,7 +28,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/advising', [HomeContoller::class, 'advising'])->name('site.advising');
     
 
-
+    
 
 
 

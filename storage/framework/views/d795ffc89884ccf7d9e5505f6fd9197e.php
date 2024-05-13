@@ -69,5 +69,11 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 <link rel="stylesheet" href="<?php echo e(asset('assets/css/about.css')); ?>">
+<style>
+   p{
+      word-break: keep-all;
+  text-align: justify;
+   }
+</style>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('site.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\ac\resources\views/site/about.blade.php ENDPATH**/ ?>

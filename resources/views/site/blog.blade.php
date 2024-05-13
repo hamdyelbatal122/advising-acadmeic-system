@@ -97,9 +97,9 @@
          </div>
       </div>
       <div class="row" id="blogs_one"></div>
-      <div class="mt-4 text-center">
+      {{-- <div class="mt-4 text-center">
          <button type="button" class="btn btn-inline" id="loadMoreBtn">load more</button>
-      </div>
+      </div> --}}
    </div>
 </section>
 @endsection

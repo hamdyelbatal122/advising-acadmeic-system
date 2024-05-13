@@ -70,4 +70,10 @@
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/css/about.css')}}">
+<style>
+   p{
+   word-break: keep-all;
+   text-align: justify;
+   }
+</style>
 @endsection
