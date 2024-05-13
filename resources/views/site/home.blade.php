@@ -159,7 +159,7 @@
             </a>
             <div class="event-content">
                <h4><a
-                  href="#">Reception of the Quality Committee</a>
+                  href="#">Reception of the Quality </a>
                </h4>
                <h5>31 Dec, 2022-31 Dec, 2022                                    </h5>
                <p>
