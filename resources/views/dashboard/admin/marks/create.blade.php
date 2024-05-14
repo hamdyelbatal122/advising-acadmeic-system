@@ -10,7 +10,7 @@
                   <h3 class="box-title"><i class=" fa fa-file-invoice"></i> Marks</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                     <li><a href="{{route('admin.advising.index')}}">Advising</a></li>
+                     <li><a href="{{route('admin.marks.index')}}">Marks</a></li>
                      <li class="active">Add Marks</li>
                   </ol>
                </div>

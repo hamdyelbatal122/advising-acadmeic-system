@@ -68,7 +68,7 @@ class MarksController extends Controller
             $mark->grade = $request->grade[$key];
             $mark->save();
         }
-        $gpa_for_currant_mark =  $this->calculateGPA($advising);
+        $gpa_for_currant_mark =  $this->calculateGPA($advising->id);
         $student->update(['gpa' => $student->gpa+$gpa_for_currant_mark]);
 
         $advising->status = 'completed';
@@ -94,16 +94,22 @@ class MarksController extends Controller
             'course' => 'required',
             'grade' => 'required',
         ]);
+        $admin_id = auth('admin')->user()->id;
         $student = Student::findOrFail($request->student_id);
         $advising = Advising::findOrFail($request->advising_id);
-        $admin_id = auth()->user()->id;
+
+        $gpa_of_advising = $this->calculateGPA($advising->id);
+        $student->update(['gpa' => $student->gpa - $gpa_of_advising]);
 
         foreach ($request->course as $key ) {
             $mark = Mark::where('advising_id', $advising->id)->where('course_id', $request->course[$key])->first();
             $mark->grade = $request->grade[$key];
-            $mark->admin_id = admin_id;
+            $mark->admin_id = $admin_id;
             $mark->save();
         }
+
+        $gpa_for_currant_mark =  $this->calculateGPA($advising->id);
+        $student->update(['gpa' => $student->gpa+$gpa_for_currant_mark]);
 
         return response()->json(['status' => true, 'message' => 'Marks updated successfully']);
         
@@ -119,7 +125,7 @@ class MarksController extends Controller
 
     public function calculateGPA($advising)
     {
-        $advising = Advising::findOrFail($advising->id);
+        $advising = Advising::findOrFail($advising);
         $marks = $advising->marks;
         $gpa_of_course = 0;
         foreach ($marks as $mark) {

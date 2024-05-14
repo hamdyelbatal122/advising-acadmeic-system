@@ -18,7 +18,7 @@
                               <?php echo e($students); ?>                            
                            </h3>
                            <p class="text-white">
-                              Student                            
+                              Students                            
                            </p>
                         </div>
                      </a>

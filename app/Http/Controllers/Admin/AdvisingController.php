@@ -44,30 +44,29 @@ class AdvisingController extends Controller
         ]);
 
         $student = Student::find($request->student_id);
-        $courses = collect(json_decode($request->courses));
-
-        
+        $courses = collect(json_decode($request->courses));        
 
         if ( $request->courses =="[null]") {
             return response()->json(['status'=>false,'message' => 'Please select courses']);
         }
 
+        $last_advising_semester = $student->lastAdvising ? $student->lastAdvising->semester : 0;
+        $active_advising_semester = $student->activeAdvising ? $student->activeAdvising->semester : null;
+
+        if($active_advising_semester){
+            return response()->json(['status'=>false,'message' => 'This student has already advising in progress']);
+        }elseif($last_advising_semester == 0 && $request->semester != 1){
+            return response()->json(['status'=>false,'message' => 'This student must be advised in semester 1 first']);
+        }elseif ($request->semester < $last_advising_semester ) {
+            return response()->json(['status'=>false,'message' => 'This student has must be advised in semester '.($last_advising_semester+1).' first']);
+        }elseif ($last_advising_semester == $request->semester) {
+            return response()->json(['status'=>false,'message' => 'This student has already advised in this semester']);
+        }
+
         $courses_hours = $this->getCourseHours($courses);
 
-        if (!$student->credit_hours_available == $courses_hours ) {
+        if ($courses_hours < $student->credit_hours_available || $courses_hours > $student->credit_hours_available) {
             return response()->json(['status'=>false,'message' => 'The total hours of the courses must be '.$student->credit_hours_available]);
-        }
-
-        $student_advising  = $student->advising()->where('status','active')->get();
-        $student_advising_in_this_semester = $student->advising()->where('semester',$request->semester)->where('status','completed')->get();
-
-        if ($student_advising->count() > 0) {
-            return response()->json(['status'=>false,'message' => 'This student already has advising in progress']);
-        }
-
-        if ($student_advising_in_this_semester->count() > 0) {
-            return response()->json(['status'=>false,'message' => 'This student already has completed advising in this semester']);
-
         }
 
         $advising =  Advising::create([

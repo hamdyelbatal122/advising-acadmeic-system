@@ -76,13 +76,11 @@
                                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('View Advisings')): ?>
                                                 <a class="btn btn-info btn-sm" href="<?php echo e(route('admin.advising.show', $advising->id)); ?>" target="_blank" ><i class="fa fa-eye"></i></a>
                                                 <?php endif; ?>
-                                                <?php if($advising->status == "active"): ?>
                                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Edit Advising')): ?>
                                                 <a class="btn btn-success btn-sm" href="<?php echo e(route('admin.advising.edit', $advising->id)); ?>"><i class="fa fa-edit"></i></a>
                                                 <?php endif; ?>
                                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Delete Advising')): ?>
                                                 <a class="btn btn-danger btn-sm" onclick="deleteRow(<?php echo e($advising->id); ?>)"><i class="fa fa-trash"></i></a>
-                                                <?php endif; ?>
                                                 <?php endif; ?>
                                              </td>
                                           </tr>

@@ -7,10 +7,10 @@
          <div class="col-xs-12">
             <div class="box">
                <div class="box-header">
-                  <h3 class="box-title"><i class=" fa fa-file-invoice"></i>Edit Marks</h3>
+                  <h3 class="box-title"><i class=" fa fa-file-invoice"></i> Marks</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                     <li><a href="{{route('admin.advising.index')}}">Advising</a></li>
+                     <li><a href="{{route('admin.marks.index')}}">Marks</a></li>
                      <li class="active">Edit Marks</li>
                   </ol>
                </div>
