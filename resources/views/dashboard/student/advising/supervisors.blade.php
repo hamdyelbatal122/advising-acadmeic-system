@@ -1,5 +1,5 @@
 @extends('dashboard.student.layouts.app')
-@section('title', 'My Courses')
+@section('title', 'My supervisors')
 @section('content')
 <aside class="right-side">
    <section class="content">
@@ -7,10 +7,10 @@
          <div class="col-xs-12">
             <div class="box">
                <div class="box-header">
-                  <h3 class="box-title"><i class="fa icon-subject"></i> My Courses</h3>
+                  <h3 class="box-title"><i class="fa icon-teacher"></i> My supervisors</h3>
                   <ol class="breadcrumb">
                      <li><a href="{{route('student.home')}}"><i class="fa fa-laptop"></i> Dashboard</a></li>
-                     <li class="active">My Courses</li>
+                     <li class="active">My supervisors</li>
                   </ol>
                </div>
                <!-- /.box-header -->
@@ -21,7 +21,7 @@
 
                         <div class="nav-tabs-custom">
                            <ul class="nav nav-tabs">
-                              <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true"> My Courses</a></li>
+                              <li class="active"><a data-toggle="tab" href="#all" aria-expanded="true"> My supervisors</a></li>
                            </ul>
                            <div class="tab-content">
                               <div id="all" class="tab-pane active">
@@ -29,32 +29,18 @@
                                     <table id="myTable" class="display" style="width:100%">
                                        <thead>
                                           <tr>
-                                             <th>#</th>
-                                             <th>Course Code</th>
-                                             <th>Course Name</th>
-                                             <th>Professor</th>
-                                             <th>Credit Hours</th>
-                                             <th>Lab</th>
-                                             <th>Grade</th>
-                                             <th>Pass Mark</th>
-                                             <th>Type</th>
+                                             <th>supervisor Code</th>
+                                             <th>supervisor Name</th>
+                                             <th>Email</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                           
-                                          @foreach($courses as $course)
-                                          <tr id="id-{{$course->id}}">
-                                             <td>{{ $loop->iteration }}</td>
-                                             <td>{{$course->course->code}}</td>
-                                             <td>{{$course->course->name}}</td>
-                                             <td>{{$course->course->professor->name}}</td>
-                                             <td>{{$course->course->hours}}</td>
-                                             <td>@if($course->course->lab == 1) Yes @else No @endif</td>
-                                             <td>100</td>
-                                             <td>50</td>
-                                             <td>
-                                                <button type="button" class="btn btn-primary btn-xs">Mandatory</button>
-                                             </td>
+                                          @foreach($supervisors as $supervisor)
+                                          <tr id="id-{{$supervisor->id}}">
+                                             <td>{{$supervisor->id}}</td>
+                                             <td>{{$supervisor->name}}</td>
+                                             <td>{{$supervisor->email}}</td>
                                           </tr>
                                           @endforeach
                                        </tbody>
