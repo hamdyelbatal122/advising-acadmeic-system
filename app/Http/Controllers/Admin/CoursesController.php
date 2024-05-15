@@ -50,7 +50,7 @@ class CoursesController extends Controller
 
     public function edit($id)
     {
-        $course = Course::find($id);
+        $course = Course::findOrFail($id);
         $admins = Admin::where('role_name', 'Professor')->get();
         return view('dashboard.admin.courses.edit', compact('course', 'admins'));
     }

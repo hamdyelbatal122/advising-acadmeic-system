@@ -51,7 +51,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control " name="professor_id" id="professor">
-                                    <option > Chose A Professor </option>
+                                    <option value=""> Chose A Professor </option>
                                     @foreach($admins as $admin)
                                     <option value="{{$admin->id}}">{{$admin->name}}</option>
                                     @endforeach
@@ -79,7 +79,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control " name="day_of_lecture" id="day_of_lecture">
-                                    <option > Chose A Day </option>
+                                    <option value=""> Chose A Day </option>
                                     <option value="Saturday">Saturday</option>
                                     <option value="Sunday">Sunday</option>
                                     <option value="Monday">Monday</option>
@@ -98,7 +98,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control " name="time_of_lecture" id="time_of_lecture">
-                                    <option > Chose A Time </option>
+                                    <option value=""> Chose A Time </option>
                                     <option value="8:00 AM">8:00 AM</option>
                                     <option value="9:00 AM">9:00 AM</option>
                                     <option value="10:00 AM">10:00 AM</option>
@@ -131,7 +131,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control " name="lab" id="lab">
-                                    <option > Chose Answer </option>
+                                    <option value=""> Chose Answer </option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                  </select>
@@ -146,7 +146,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control " name="day_of_lab" id="day_of_lab">
-                                    <option > Chose A Day </option>
+                                    <option value=""> Chose A Day </option>
                                     <option value="Saturday">Saturday</option>
                                     <option value="Sunday">Sunday</option>
                                     <option value="Monday">Monday</option>
@@ -165,7 +165,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control " name="time_of_lab" id="time_of_lab">
-                                    <option > Chose A Time </option>
+                                    <option value=""> Chose A Time </option>
                                     <option value="8:00 AM">8:00 AM</option>
                                     <option value="9:00 AM">9:00 AM</option>
                                     <option value="10:00 AM">10:00 AM</option>

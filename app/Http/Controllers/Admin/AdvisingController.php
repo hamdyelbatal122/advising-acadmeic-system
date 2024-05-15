@@ -50,23 +50,10 @@ class AdvisingController extends Controller
             return response()->json(['status'=>false,'message' => 'Please select courses']);
         }
 
-        $last_advising_semester = $student->lastAdvising ? $student->lastAdvising->semester : 0;
-        $active_advising_semester = $student->activeAdvising ? $student->activeAdvising->semester : null;
+       $validation = $this->validateStudentProcessOfAdvising($student, $courses, $request, 'store'); 
 
-        if($active_advising_semester){
-            return response()->json(['status'=>false,'message' => 'This student has already advising in progress']);
-        }elseif($last_advising_semester == 0 && $request->semester != 1){
-            return response()->json(['status'=>false,'message' => 'This student must be advised in semester 1 first']);
-        }elseif ($request->semester < $last_advising_semester ) {
-            return response()->json(['status'=>false,'message' => 'This student has must be advised in semester '.($last_advising_semester+1).' first']);
-        }elseif ($last_advising_semester == $request->semester) {
-            return response()->json(['status'=>false,'message' => 'This student has already advised in this semester']);
-        }
-
-        $courses_hours = $this->getCourseHours($courses);
-
-        if ($courses_hours < $student->credit_hours_available || $courses_hours > $student->credit_hours_available) {
-            return response()->json(['status'=>false,'message' => 'The total hours of the courses must be '.$student->credit_hours_available]);
+        if ($validation) {
+            return $validation;
         }
 
         $advising =  Advising::create([
@@ -99,7 +86,7 @@ class AdvisingController extends Controller
 
         $advising = Advising::findOrfail($id);
         $student = $advising->student;
-        return view('dashboard.admin.advising.view', compact('advising','student'));
+        return view('dashboard.student.advising.view', compact('advising','student'));
     }
 
     public function edit($id)
@@ -119,16 +106,23 @@ class AdvisingController extends Controller
         ]);
 
         $advising = Advising::findOrfail($request->id);
-        $student = Student::find($request->student_id);
+        $student = Student::findOrFail($request->student_id);
+        $courses = collect(json_decode($request->courses));
+
         
 
         if ( $request->courses =="[null]") {
             return response()->json(['status'=>false,'message' => 'Please select courses']);
         }
 
+       $validation = $this->validateStudentProcessOfAdvising($student, $courses, $request, 'update'); 
+
+        if ($validation) {
+            return $validation;
+        }
+
         $advising->courses()->delete();
 
-        $courses = collect(json_decode($request->courses));
 
         foreach($courses as $course){
             $course = Course::find($course);
@@ -167,6 +161,28 @@ class AdvisingController extends Controller
             $hours += $course->hours;
         }
         return $hours;
+    }
+
+    public function validateStudentProcessOfAdvising($student, $courses , $request, $type)
+    {
+        $last_advising_semester = $student->lastAdvising ? $student->lastAdvising->semester : 0;
+        $active_advising_semester = $student->activeAdvising ? $student->activeAdvising->semester : null;
+
+        if(($active_advising_semester && $type == 'store' )){
+            return response()->json(['status'=>false,'message' => 'This student has already advising in progress']);
+        }elseif($last_advising_semester == 0 && $request->semester != 1){
+            return response()->json(['status'=>false,'message' => 'This student must be advised in semester 1 first']);
+        }elseif ($request->semester < $last_advising_semester ) {
+            return response()->json(['status'=>false,'message' => 'This student has must be advised in semester '.($last_advising_semester+1).' first']);
+        }elseif ($last_advising_semester == $request->semester) {
+            return response()->json(['status'=>false,'message' => 'This student has already advised in this semester']);
+        }
+
+        $courses_hours = $this->getCourseHours($courses);
+
+        if ($courses_hours < $student->credit_hours_available || $courses_hours > $student->credit_hours_available) {
+            return response()->json(['status'=>false,'message' => 'The total hours of the courses must be '.$student->credit_hours_available]);
+        }
     }
 
 

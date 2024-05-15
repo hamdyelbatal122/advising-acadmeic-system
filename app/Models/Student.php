@@ -40,6 +40,7 @@ class Student extends Authenticatable
         'supervisor_id',
         'password',
         'currant_password',
+        'admin_id',
     ];
 
     /**
@@ -66,6 +67,16 @@ class Student extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function supervisor()
+    {
+        return $this->belongsTo(Admin::class, 'supervisor_id', 'id');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id', 'id');
     }
 
     public function studentCourses()

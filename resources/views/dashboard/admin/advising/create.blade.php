@@ -56,17 +56,17 @@
                               Courses <span class="text-red">*</span>
                               </label>
                               <div class="col-sm-6">
-                                 <select class="form-control " name="course" id="course">
+                                 <select class="form-control select2" name="course" id="course">
                                     <option value="">Select Course</option>
                                     @foreach($courses as $course)
-                                    <option value="{{$course->id}}" data-professor="{{$course->professor->name}}" data-code="{{$course->code}}" data-hours="{{$course->hours}}"> {{$course->name}}</option>
+                                    <option value="{{$course->id}}" data-name="{{$course->name}}" data-professor="{{$course->professor->name}}" data-code="{{$course->code}}" data-hours="{{$course->hours}}">{{$course->code}} - {{$course->name}} - {{$course->hours}} CH</option>
                                     @endforeach
                                  </select>
                               </div>
                               
                               <span class="col-sm-4 control-label">
                                  <button type="button" class="btn btn-warning" id="addCourse" >
-                                 Add <i class="fa fa-plus"></i>
+                                 Add 
                                  </button>
 
                               </span>
@@ -174,7 +174,7 @@ $.ajax({
 
     document.getElementById("add").reset();
    $('#table tbody').empty();
-   $('#table tbody').append('<tr id="noDataTr"><td colspan="4" align="center">No Course Chosen</td></tr>');
+   $('#table tbody').append('<tr id="noDataTr"><td colspan="5" align="center">No Course Chosen</td></tr>');
    $('.select2').val('').trigger('change');
 
 
@@ -203,7 +203,7 @@ $.ajax({
       toastr.error('Please select a course');
       return;
     }
-    var course_name = $("#course option:selected").text();
+    var course_name = $("#course option:selected").attr('data-name');
     var course_hours = $("#course option:selected").attr('data-hours');
     var course_code = $("#course option:selected").attr('data-code');
     var course_professor = $("#course option:selected").attr('data-professor');
