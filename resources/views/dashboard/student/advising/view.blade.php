@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#{{$advising->id}} - {{$advising->year}}</title>
+    <title>Advising - #{{$advising->id}} - {{$advising->year}}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -56,12 +56,29 @@
             background-color: #f2f2f2;
             color: #333;
         }
+        .signature-head {
+            font-style: italic;
+            font-weight: bold;
+        }
+        .signature {
+            font-style: italic;
+            font-weight: bold;
+            font-family: 'Sacramento', cursive; /* Handwritten font */
+            font-size: 24px;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #0d3b66;
+            font-size: 14px;
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <center>
-        <h1>{{env('APP_NAME')}} University Dashboard</h1>
+        <h1>{{env('APP_NAME')}} Advising System</h1>
         <h2>#{{$advising->id}} - {{$advising->year}}</h2>
         </center>
         <div class="card">
@@ -72,6 +89,8 @@
                     <p><strong>Student ID:</strong> {{$student->id}}</p>
                     <p><strong>Email:</strong> {{$student->email}}</p>
                     <p><strong>Level:</strong> {{$student->level}}</p>
+                    <p><strong>Semester:</strong> {{$advising->semester}}</p>
+
                 </div>
             </div>
         </div>
@@ -103,8 +122,9 @@
         </div>
         <footer align="center">
             <p>Powered by {{env('APP_NAME')}}</p>
+            <p class="signature-head">Manager's Signature</p>
+            <p class="signature text-center">{{$student->admin->full_name}}</p>
             <p>Contact: advising@cis.edu</p>
-            <p>&copy; {{date('Y')}} {{env('APP_NAME')}}. All rights reserved.</p>
         </footer>
     </div>
 </body>

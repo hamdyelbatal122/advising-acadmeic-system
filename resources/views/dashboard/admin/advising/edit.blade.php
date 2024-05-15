@@ -41,15 +41,7 @@
                               </label>
                               <div class="col-sm-6">
                                  <select class="form-control" name="semester" id="semester" readonly>
-                                    <option value="">Select Semester</option>
-                                    <option value="1" @if($advising->semester == 1) selected @endif>Semester 1</option>
-                                    <option value="2" @if($advising->semester == 2) selected @endif>Semester 2</option>
-                                    <option value="3" @if($advising->semester == 3) selected @endif>Semester 3</option>
-                                    <option value="4" @if($advising->semester == 4) selected @endif>Semester 4</option>
-                                    <option value="5" @if($advising->semester == 5) selected @endif>Semester 5</option>
-                                    <option value="6" @if($advising->semester == 6) selected @endif>Semester 6</option>
-                                    <option value="7" @if($advising->semester == 7) selected @endif>Semester 7</option>
-                                    <option value="8" @if($advising->semester == 8) selected @endif>Semester 8</option>
+                                    <option value="{{$advising->semester}}"  selected >Semester {{$advising->semester}}</option>
                                 </select>
                               </div>  
                                 
@@ -62,19 +54,18 @@
                               Courses <span class="text-red">*</span>
                               </label>
                               <div class="col-sm-6">
-                                 <select class="form-control " name="course" id="course">
-                                    <option value="" >Select Course</option>
+                                 <select class="form-control select2" name="course" id="course">
+                                    <option value="">Select Course</option>
                                     @foreach($courses as $course)
-                                    <option value="{{$course->id}}" data-professor="{{$course->professor->name}}" data-code="{{$course->code}}"> {{$course->name}}</option>
+                                    <option value="{{$course->id}}" data-name="{{$course->name}}" data-professor="{{$course->professor->name}}" data-code="{{$course->code}}" data-hours="{{$course->hours}}">{{$course->code}} - {{$course->name}} - {{$course->hours}} CH</option>
                                     @endforeach
                                  </select>
                               </div>
                               
                               <span class="col-sm-4 control-label">
                                  <button type="button" class="btn btn-warning" id="addCourse" >
-                                 Add <i class="fa fa-plus"></i>
-                                 </button>
-
+                                    Add  
+                                    </button>
                               </span>
                            </div>
 
@@ -92,6 +83,7 @@
                                        <tr>
                                           <th>Course</th>
                                           <th>Code</th>
+                                          <th>Credit Hours</th>
                                           <th>Professor</th>
                                           <th>Actions</th>
                                        </tr>
@@ -102,13 +94,14 @@
                                        <tr id="course-{{$course->course_id}}">
                                           <td>{{$course->course->name}}</td>
                                           <td>{{$course->course->code}}</td>
+                                          <td>{{$course->course->hours}}</td>
                                           <td>{{$course->course->professor->name}}</td>
                                           <td><button id="removeCourse" type="button" class="btn btn-danger" onclick="deleteRow({{$course->course_id}})">Delete</button></td>
                                        </tr>
                                        @endforeach
                                        @else
                                        <tr id="noDataTr">
-                                          <td colspan="4" align="center">No Course Chosen</td>
+                                          <td colspan="5" align="center">No Course Chosen</td>
                                        </tr>
                                        @endif
                                     </tbody>
@@ -147,6 +140,7 @@
 
 @section('js')
 <script type="text/javascript">
+
    $( ".select2" ).select2();
 
    $('#edit').submit(function(e) {
@@ -213,8 +207,9 @@ $.ajax({
       toastr.error('Please select a course');
       return;
     }
-    var course_name = $("#course option:selected").text();
+    var course_name = $("#course option:selected").attr('data-name');
     var course_code = $("#course option:selected").attr('data-code');
+    var course_hours = $("#course option:selected").attr('data-hours');
     var course_professor = $("#course option:selected").attr('data-professor');
     
 
@@ -230,6 +225,7 @@ $.ajax({
     var html = '<tr id="course-'+course_id+'">';
     html += '<td>'+course_name+'</td>';
     html += '<td>'+course_code+'</td>';
+    html += '<td>'+course_hours+'</td>';
     html += '<td>'+course_professor+'</td>';
     html += '<td><button id="removeCourse" type="button" class="btn btn-danger" onclick="deleteRow('+course_id+')">Delete</button></td>';
     html += '</tr>';
@@ -244,7 +240,7 @@ $.ajax({
     $('#course-'+id).remove();
 
     if ($('#table tbody').children().length === 0) {
-         $('#table tbody').append('<tr id="noDataTr"><td colspan="4" align="center">No Course Chosen</td></tr>');
+         $('#table tbody').append('<tr id="noDataTr"><td colspan="5" align="center">No Course Chosen</td></tr>');
     }
    }
 

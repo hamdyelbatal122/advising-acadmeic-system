@@ -135,8 +135,7 @@
     <footer class="footer">
         <p class="text-center">Viewed on: {{ date('Y-m-d H:i:s') }}</p>
         <p class="signature-head">Manager's Signature</p>
-        <p class="signature-head">Professor Engineer</p>
-        <p class="signature text-center">Ahmed Nasr</p>
+        <p class="signature text-center">{{$student->admin->full_name}}</p>
     </footer>
 </body>
 </html>
