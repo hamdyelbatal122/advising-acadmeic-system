@@ -65,10 +65,10 @@
                    <div class="box-header" style="background-color:#FFFFFF;">
                       <h3 class="box-title" style="color:#23292F;">Semester {{$advising->semester}} </h3>
                    </div>
-                   <div class="box-body mark-bodyID mCustomScrollbar _mCS_1 mCS_no_scrollbar" style="border-top:1px solid #23292F;">
-                      <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_horizontal mCSB_inside" style="max-height: none;" tabindex="0">
-                         <div id="mCSB_1_container" class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
-                            <table class="table table-striped table-bordered">
+                   <div class="box-body mark-bodyID" style="border-top:1px solid #23292F;">
+                    <div class="" style="max-height: none;" tabindex="0">
+                       <div style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                          <table class="table table-striped table-bordered">
                                <thead>
                                   <tr>
                                      <th class="text-center" rowspan="2" style="background-color:#395C7F;color:#fff;" data-title="Subject">Subject</th>
@@ -123,14 +123,6 @@
                             </table>
                             <div class="box-footer" style="padding-left:0px;">
                                <p class="text-black">Total Marks : <span class="text-red text-bold">{{number_format($count * 100,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Obtained Marks : <span class="text-red text-bold">{{number_format($myGrades,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks : <span class="text-red text-bold">{{number_format($myGrades/$count,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Total Average Marks() : <span class="text-red text-bold">{{number_format($total_gpa_in_marks/$count,2)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Gpa : <span class="text-red text-bold">{{number_format($student->gpa,2)}}</span></p>
-                            </div>
-                         </div>
-                         <div id="mCSB_1_scrollbar_horizontal" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_horizontal" style="display: none;">
-                            <div class="mCSB_draggerContainer">
-                               <div id="mCSB_1_dragger_horizontal" class="mCSB_dragger" style="position: absolute; min-width: 30px; display: block; width: 0px; left: 0px;">
-                                  <div class="mCSB_dragger_bar"></div>
-                               </div>
-                               <div class="mCSB_draggerRail"></div>
                             </div>
                          </div>
                       </div>
@@ -205,6 +197,11 @@
         window.location.reload();
     }
 
+    $(".mark-bodyID").mCustomScrollbar({
+            axis:"x",
+            theme:"light-3",
+            advanced:{autoExpandHorizontalScroll:true}
+        });
 
 
 </script>

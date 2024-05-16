@@ -103,5 +103,36 @@ class Mark extends Model
         }
     }
 
+    public static function calculateSemesterGrade($myGrades, $count)
+    {
+        $percentage = $myGrades / $count;
+
+        if ($percentage >= 90) {
+            return 'A+';
+        } elseif ($percentage >= 85) {
+            return 'A';
+        } elseif ($percentage >= 80) {
+            return 'A-';
+        } elseif ($percentage >= 75) {
+            return 'B+';
+        } elseif ($percentage >= 70) {
+            return 'B';
+        } elseif ($percentage >= 65) {
+            return 'B-';
+        } elseif ($percentage >= 60) {
+            return 'C+';
+        } elseif ($percentage >= 55) {
+            return 'C';
+        } elseif ($percentage >= 50) {
+            return 'C-';
+        } elseif ($percentage >= 45) {
+            return 'D';
+        } else {
+            return 'F';
+        }
+    }
+
+    
+
 
 }

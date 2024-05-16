@@ -16,7 +16,6 @@
       <link id="headStyleCSSLink" href="{{asset('assets/css/style.css')}}" rel="stylesheet">
       <link href="{{asset('assets/css/hidetable.css')}}" rel="stylesheet">
       <link href="{{asset('assets/css/inilabs.css')}}" rel="stylesheet">
-      <link id="headInilabsCSSLink" href="{{asset('assets/css/inilabs.css')}}" rel="stylesheet">
       <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
       <link href="{{asset('assets/css/toastr.min.css')}}" rel="stylesheet">
       <link href="{{asset('assets/css/mailandmedia.css')}}" rel="stylesheet">
@@ -29,6 +28,8 @@
       <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/css/toastr.css">
+      <link href="{{asset('assets/css/default-style.css')}}" rel="stylesheet">
+     </head>
       @yield('css')
       <meta name="csrf-token" content="{{ csrf_token() }}">
 
