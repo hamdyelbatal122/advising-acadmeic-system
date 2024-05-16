@@ -103,7 +103,7 @@
 
                                         @if(count($courses) == 0)
                                         <tr>
-                                            <td colspan="3">No Course Found In Your Advising Form , Stay tuned for Advising Start</td>
+                                            <td colspan="3">No Course Found In Your Advising , Stay tuned for Advising Start</td>
                                         </tr>
                                         @endif
 
@@ -186,6 +186,9 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/css/jquery.mCustomScrollbar.css')}}">
 <style>
-
-</style>
+    #routine{
+       background: #fff;
+       padding: 10px;
+    }
+    </style>
 @endsection

@@ -58,6 +58,9 @@
                            </li>
                            @endif
                            <li class="list-group-item" style="background-color: #FFF">
+                              <b>GPA</b> <a class="pull-right">{{$student->gpa}}</a>
+                           </li>
+                           <li class="list-group-item" style="background-color: #FFF">
                               <b>Section</b> <a class="pull-right">A</a>
                            </li>
                         </ul>
@@ -69,6 +72,7 @@
                      <ul class="nav nav-tabs">
                         <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
                         <li class=""><a href="#routine" data-toggle="tab">Routine</a></li>
+                        <li class=""><a href="#examschedules" data-toggle="tab">Exam Schedules</a></li>
                         <li class=""><a href="#mark" data-toggle="tab">Mark</a></li>
                         <li><a href="#document" data-toggle="tab">Document</a></li>
                      </ul>
@@ -189,6 +193,51 @@
                                        @if(count($courses) == 0)
                                        <tr>
                                           <td colspan="3">No Course Found In Your Advising Form , Stay tuned for Advising Start</td>
+                                       </tr>
+                                       @endif
+                                    </tbody>
+                                 </table>
+                              </div>
+                           {{-- </div> --}}
+                        </div>
+                        <div class="tab-pane" id="examschedules">
+                           {{-- <div class="container"> --}}
+                              <br>
+                              <div class="table-responsive">
+                                 <table class="table table-bordered table-sm">
+                                    <thead class="thead-light">
+                                       <tr>
+                                          <th class="text-center">Course</th>
+                                          <th class="text-center">Lecture</th>
+                                          <th class="text-center">Lab</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody align="center" style="padding-top: 10px">
+                                       @foreach($courses as $course)
+                                       <tr>
+                                          <td>
+                                             <h4>{{$course->course->name}}</h4>
+                                             <b>{{$course->course->code}}</b>
+                                          </td>
+                                          <td>
+                                             <p><strong>Day:</strong> {{$course->course->day_of_lecture}}</p>
+                                             <p><strong>Time:</strong> {{$course->course->time_of_lecture}} - {{$course->course->end_of_lecture}}</p>
+                                             <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                          </td>
+                                          <td>
+                                             @if($course->course->lab)
+                                             <p><strong>Day:</strong> {{$course->course->day_of_lab}}</p>
+                                             <p><strong>Time:</strong> {{$course->course->time_of_lab}} - {{$course->course->end_of_lab}}</p>
+                                             <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                             @else
+                                             <p>N/A</p>
+                                             @endif
+                                          </td>
+                                       </tr>
+                                       @endforeach
+                                       @if(count($courses) == 0)
+                                       <tr>
+                                          <td colspan="3">No Course Found In Student Advising </td>
                                        </tr>
                                        @endif
                                     </tbody>

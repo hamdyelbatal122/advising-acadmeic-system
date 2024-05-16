@@ -58,57 +58,52 @@
                <div class="col-sm-9">
                   <div class="nav-tabs-custom">
                      <ul class="nav nav-tabs">
-                        <li class="active"><a href="#routine" data-toggle="tab">Routine</a></li>
+                        <li class="active"><a href="#exams" data-toggle="tab">Routine</a></li>
                      </ul>
-                     <div class="tab-pane" id="routine">
-                    <div class="container">
-                        <br>
-                        <div class="table-responsive">
-                           <table class="table table-bordered table-responsive">
-                              <thead>
-                                 <tr>
-                                    <th class="text-center">Course</th>
-                                    <th class="text-center">Exam Date</th>
-                                    <th class="text-center">Lab Of Exam</th>
-                                 </tr>
-                              </thead>
-                              <tbody align="center">
-                                 @foreach($courses as $course)
-                                 <tr>
-                                    <td style=" padding-top : 20px;"align="center" >
-                                       <h5>
-                                       {{$course->course->name}} 
-                                       <h5>
-                                       <b>{{$course->course->code}}</b>
-                                    </td>
-                                    <td class="text-center">
-                                       <p style="margin: 0 0 1px">
-                                        @if($course->course->exam_date)
-                                        {{$course->course->exam_date}}
-                                        @else
-                                        Not Set
-                                        @endif
-                                       </p>
-
-                                    </td>
-                                    <td class="text-center">
-                                        <p style="margin: 0 0 1px">
-                                        Class {{rand(1, 10)}}
-                                        </p>
-                                    </td>
-                                 </tr>
-                                 @endforeach
-
-                                 @if(count($courses) == 0)
-                                 <tr>
-                                     <td colspan="3">No Course Found In Your Advising Form , Stay tuned for Advising Start</td>
-                                 </tr>
-                                 @endif
-
-                              </tbody>
-                           </table>
-                        </div>
-                      </div>
+                     <div class="tab-pane" id="exams">
+                        {{-- <div class="container"> --}}
+                           <br>
+                           <div class="table-responsive">
+                              <table class="table table-bordered table-sm">
+                                 <thead class="thead-light">
+                                    <tr>
+                                       <th class="text-center">Course</th>
+                                       <th class="text-center">Lecture</th>
+                                       <th class="text-center">Lab</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody align="center" style="padding-top: 10px">
+                                    @foreach($courses as $course)
+                                    <tr>
+                                       <td>
+                                          <h4>{{$course->course->name}}</h4>
+                                          <b>{{$course->course->code}}</b>
+                                       </td>
+                                       <td>
+                                          <p><strong>Day:</strong> {{$course->course->day_of_lecture}}</p>
+                                          <p><strong>Time:</strong> {{$course->course->time_of_lecture}} - {{$course->course->end_of_lecture}}</p>
+                                          <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                       </td>
+                                       <td>
+                                          @if($course->course->lab)
+                                          <p><strong>Day:</strong> {{$course->course->day_of_lab}}</p>
+                                          <p><strong>Time:</strong> {{$course->course->time_of_lab}} - {{$course->course->end_of_lab}}</p>
+                                          <p><strong>Professor:</strong> {{$course->course->professor->name}}</p>
+                                          @else
+                                          <p>N/A</p>
+                                          @endif
+                                       </td>
+                                    </tr>
+                                    @endforeach
+                                    @if(count($courses) == 0)
+                                    <tr>
+                                       <td colspan="3">No Course Found In Your Advising , Stay tuned for Advising Start</td>
+                                    </tr>
+                                    @endif
+                                 </tbody>
+                              </table>
+                           </div>
+                        {{-- </div> --}}
                      </div>
                   </div>
                </div>
@@ -175,4 +170,13 @@
       </div>
    </section>
 </aside>
+@endsection
+@section('css')
+<link rel="stylesheet" href="{{asset('assets/css/jquery.mCustomScrollbar.css')}}">
+<style>
+#exams{
+   background: #fff;
+   padding: 10px;
+}
+</style>
 @endsection

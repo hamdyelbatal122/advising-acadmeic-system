@@ -69,7 +69,12 @@ class MarksController extends Controller
             $mark->save();
         }
         $gpa_for_currant_mark =  $this->calculateGPA($advising->id);
-        $student->update(['gpa' => $student->gpa+$gpa_for_currant_mark]);
+
+        $advising_count = $student->advising->count();
+        $avarage = ($advising_count > 1) ? 2 : 1;
+        $gpa = (($student->gpa + $gpa_for_currant_mark ) / $avarage) ; 
+        
+        $student->update(['gpa' =>  $gpa]);
 
         $advising->status = 'completed';
         $advising->save();
@@ -98,8 +103,11 @@ class MarksController extends Controller
         $student = Student::findOrFail($request->student_id);
         $advising = Advising::findOrFail($request->advising_id);
 
-        $gpa_of_advising = $this->calculateGPA($advising->id);
-        $student->update(['gpa' => $student->gpa - $gpa_of_advising]);
+        $gpa_of_advising_mark = $this->calculateGPA($advising->id);
+
+        $advising_count = $student->advising->count();
+        $avarage = ($advising_count > 1) ? 2 : 1;
+        $gpa = ($student->gpa * $avarage - $gpa_of_advising_mark ) ; 
 
         foreach ($request->course as $key ) {
             $mark = Mark::where('advising_id', $advising->id)->where('course_id', $request->course[$key])->first();
@@ -109,7 +117,12 @@ class MarksController extends Controller
         }
 
         $gpa_for_currant_mark =  $this->calculateGPA($advising->id);
-        $student->update(['gpa' => $student->gpa+$gpa_for_currant_mark]);
+
+        $advising_count = $student->advising->count();
+        $avarage = ($advising_count > 1) ? 2 : 1;
+        $gpa = (($student->gpa + $gpa_for_currant_mark ) / $avarage) ; 
+        
+        $student->update(['gpa' =>  $gpa]);
 
         return response()->json(['status' => true, 'message' => 'Marks updated successfully']);
         

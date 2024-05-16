@@ -73,6 +73,7 @@
                      <ul class="nav nav-tabs">
                         <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
                         <li class=""><a href="#routine" data-toggle="tab">Routine</a></li>
+                        <li class=""><a href="#examschedules" data-toggle="tab">Exam Schedules</a></li>
                         <li class=""><a href="#mark" data-toggle="tab">Mark</a></li>
                         <li><a href="#document" data-toggle="tab">Document</a></li>
                      </ul>
@@ -212,6 +213,52 @@
                                   </table>
                               </div>
                           
+                        </div>
+                        
+                        <div class="tab-pane" id="examschedules">
+                           
+                              <br>
+                              <div class="table-responsive">
+                                 <table class="table table-bordered table-sm">
+                                    <thead class="thead-light">
+                                       <tr>
+                                          <th class="text-center">Course</th>
+                                          <th class="text-center">Lecture</th>
+                                          <th class="text-center">Lab</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody align="center" style="padding-top: 10px">
+                                       <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                       <tr>
+                                          <td>
+                                             <h4><?php echo e($course->course->name); ?></h4>
+                                             <b><?php echo e($course->course->code); ?></b>
+                                          </td>
+                                          <td>
+                                             <p><strong>Day:</strong> <?php echo e($course->course->day_of_lecture); ?></p>
+                                             <p><strong>Time:</strong> <?php echo e($course->course->time_of_lecture); ?> - <?php echo e($course->course->end_of_lecture); ?></p>
+                                             <p><strong>Professor:</strong> <?php echo e($course->course->professor->name); ?></p>
+                                          </td>
+                                          <td>
+                                             <?php if($course->course->lab): ?>
+                                             <p><strong>Day:</strong> <?php echo e($course->course->day_of_lab); ?></p>
+                                             <p><strong>Time:</strong> <?php echo e($course->course->time_of_lab); ?> - <?php echo e($course->course->end_of_lab); ?></p>
+                                             <p><strong>Professor:</strong> <?php echo e($course->course->professor->name); ?></p>
+                                             <?php else: ?>
+                                             <p>N/A</p>
+                                             <?php endif; ?>
+                                          </td>
+                                       </tr>
+                                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                       <?php if(count($courses) == 0): ?>
+                                       <tr>
+                                          <td colspan="3">No Course Found In Student Advising , Stay tuned for Advising Start</td>
+                                       </tr>
+                                       <?php endif; ?>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           
                         </div>
                         <div class="tab-pane " id="mark">
                            <?php if($lastAdvisingMarks): ?>

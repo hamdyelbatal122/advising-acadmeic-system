@@ -133,4 +133,10 @@ class Student extends Authenticatable
 
 
     }
+
+
+    public function getGpaAttribute($value)
+    {
+        return number_format($value, 2);
+    }
 }

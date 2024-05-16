@@ -45,8 +45,8 @@
                                     <table id="myTable" class="display" style="width:100%">
                                        <thead>
                                           <tr>
-                                             <th>Id</th>
-                                             <th>Student Name</th>
+                                             <th>#</th>
+                                             <th>Id-Student Name</th>
                                              <th>Level</th>
                                              <th>Semster </th>
                                              <th>Year</th>
@@ -61,7 +61,7 @@
                                              <td>{{$advising->student->id}} - {{$advising->student->first_name}} {{$advising->student->last_name}}</td>
                                              <td>{{$advising->level}}</td>
                                              <td>{{$advising->semester}}</td>
-                                             <td>{{$advising->admin->name}}</td>
+                                             <td>{{$advising->year}}</td>
                                              <td>{{$advising->admin->name}}</td>
 
                                              <td>
