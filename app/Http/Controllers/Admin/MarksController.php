@@ -109,6 +109,9 @@ class MarksController extends Controller
         $avarage = ($advising_count > 1) ? 2 : 1;
         $gpa = ($student->gpa * $avarage - $gpa_of_advising_mark ) ; 
 
+        $student->update(['gpa' =>  $gpa]);
+
+
         foreach ($request->course as $key ) {
             $mark = Mark::where('advising_id', $advising->id)->where('course_id', $request->course[$key])->first();
             $mark->grade = $request->grade[$key];
