@@ -355,7 +355,7 @@
                                        <td>Admission Form</td>
                                        <td><?php echo e($student->created_at); ?></td>
                                        <td>
-                                          <a href="<?php echo e(route('student.admission.prinit')); ?>" >
+                                          <a href="<?php echo e(route('admin.students.admission.prinit',$student->id)); ?>" >
                                           <button class="btn-cs btn-sm-cs">view</button>
                                           </a>
                                        </td>

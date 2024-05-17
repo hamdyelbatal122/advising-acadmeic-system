@@ -122,12 +122,15 @@ class StudentsContoller extends Controller
         $activeAdvising = $student->activeAdvising;
         $advisings = $student->advising->where('status','completed')->load('marks');
 
-
-
-
         if ($activeAdvising) { $courses = $student->activeAdvising->courses->load('course')->load('course.professor');} else { $courses = [];}
 
         return view('dashboard.admin.students.view', compact('student', 'courses', 'activeAdvising', 'advisings'));
+    }
+
+    public function viewAdmissionForm($id)
+    {
+        $student = Student::findOrFail($id);
+        return view('dashboard.student.admission.view', compact('student'));
     }
 
 

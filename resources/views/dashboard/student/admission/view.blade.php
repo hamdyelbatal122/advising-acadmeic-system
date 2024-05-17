@@ -90,13 +90,7 @@
                             <tr>
                                 <th scope="row">Date of Birth</th>
                                 <td>{{$student->birth}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
+                            </tr>     
                             <tr>
                                 <th scope="row">Blood Type</th>
                                 <td>{{$student->blood}}</td>
