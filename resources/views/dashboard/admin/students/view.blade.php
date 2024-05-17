@@ -339,7 +339,7 @@
                                        <td>Admission Form</td>
                                        <td>{{$student->created_at}}</td>
                                        <td>
-                                          <a href="{{route('admin.students.prinit',$student->id)}}" >
+                                          <a href="{{route('admin.students.prinit ',$student->id)}}" >
                                           <button class="btn-cs btn-sm-cs">view</button>
                                           </a>
                                        </td>
