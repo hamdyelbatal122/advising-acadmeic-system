@@ -55,7 +55,7 @@
                               <div class="col-sm-12">
                                  <h5><strong style="color:@if($reply->admin_id)red; @else blue; @endif">@if($reply->admin_id) Reply From Admin : @else  Reply From You @endif</strong></h5>
                                  <p>{!!$reply->message!!}</p>
-                                 @if($reply->admin_id) <p><strong> By Admin : </strong>{{$reply->admin->name}}</p>@endif
+                                 @if($reply->admin_id) <p><strong> By Admin : </strong>{{$reply->admin->full_name}}</p>@endif
                                  <p><strong> Date : </strong>{{$reply->created_at}}</p>
                                  <hr>
                               </div>

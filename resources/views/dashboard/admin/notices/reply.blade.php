@@ -136,6 +136,7 @@
 
       $('#message').jqteVal('');
       $('.select2').val('').trigger('change');
+      window.location.href = response.url;
 
    
        } 

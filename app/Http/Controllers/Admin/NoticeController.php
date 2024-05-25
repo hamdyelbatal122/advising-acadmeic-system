@@ -92,7 +92,7 @@ class NoticeController extends Controller
             'message' => $request->message,
         ]);
 
-        return response()->json(['status'=>true,'message' => 'Message sent successfully']);
+        return response()->json(['status'=>true,'message' => 'Message sent successfully', 'url' => route('admin.notices.reply', $notice->id)]);
     }
 
 

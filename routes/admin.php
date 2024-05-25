@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('view/{id}', [StudentsContoller::class, 'view'])->name('admin.students.view');
             Route::post('update', [StudentsContoller::class, 'update'])->name('admin.students.update');
             Route::post('delete', [StudentsContoller::class, 'delete'])->name('admin.students.delete');
-            Route::get('admission/view/{id}', [StudentsContoller::class, 'viewAdmissionForm'])->name('admin.students.prinit');
+            Route::get('admission/view/{id}', [StudentsContoller::class, 'viewAdmissionForm'])->name('admin.students.print');
         });
 
         Route::group(['prefix' => 'courses'], function () {

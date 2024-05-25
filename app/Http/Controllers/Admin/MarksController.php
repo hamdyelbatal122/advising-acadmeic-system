@@ -75,6 +75,10 @@ class MarksController extends Controller
         $gpa = (($student->gpa + $gpa_for_currant_mark ) / $avarage) ; 
         
         $student->update(['gpa' =>  $gpa]);
+        
+        if($advising->semester % 2 == 0 && $advising->semester <= 8){
+            $student->update(['level' => $student->level + 1]);
+        }
 
         $advising->status = 'completed';
         $advising->save();
@@ -126,6 +130,7 @@ class MarksController extends Controller
         $gpa = (($student->gpa + $gpa_for_currant_mark ) / $avarage) ; 
         
         $student->update(['gpa' =>  $gpa]);
+        
 
         return response()->json(['status' => true, 'message' => 'Marks updated successfully']);
         

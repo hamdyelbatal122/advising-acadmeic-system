@@ -33,7 +33,7 @@ Route::group(['prefix' => 'dashboard','middleware' => 'auth:student'], function 
     Route::group(['prefix' => 'academic',], function () {
         Route::get('supervisors', [HomeController::class, 'MySupervisors'])->name('student.supervisor');
         Route::get('advising/{id}', [HomeController::class, 'PrintAdvising'])->name('student.advising.print');
-        Route::get('admission/form/view', [HomeController::class, 'viewAdmissionForm'])->name('student.admission.prinit');
+        Route::get('admission/form/view', [HomeController::class, 'viewAdmissionForm'])->name('student.admission.print');
         Route::get('marks', [HomeController::class, 'marks'])->name('student.marks.index');
 
     });
