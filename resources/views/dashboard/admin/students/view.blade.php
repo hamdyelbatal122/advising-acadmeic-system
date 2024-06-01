@@ -339,7 +339,7 @@
                                        <td>Admission Form</td>
                                        <td>{{$student->created_at}}</td>
                                        <td>
-                                          <a href="{{route('admin.students.print ',$student->id)}}" >
+                                          <a href="{{route('admin.students.print',$student->id)}}" >
                                           <button class="btn-cs btn-sm-cs">view</button>
                                           </a>
                                        </td>
@@ -354,7 +354,7 @@
                                        </td>
                                        <td>{{$advising->created_at}}</td>
                                        <td>
-                                          <a href="{{route('student.advising.print',$advising->id)}}" >
+                                          <a href="{{route('admin.advising.show',$advising->id)}}" >
                                           <button class="btn-cs btn-sm-cs">view</button>
                                           </a>
                                        </td>
