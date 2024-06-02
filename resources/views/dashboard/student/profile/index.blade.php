@@ -58,6 +58,9 @@
                            </li>
                            @endif
                            <li class="list-group-item" style="background-color: #FFF">
+                              <b>GPA</b> <a class="pull-right">{{$student->gpa}}</a>
+                           </li>
+                           <li class="list-group-item" style="background-color: #FFF">
                               <b>Section</b> <a class="pull-right">A</a>
                            </li>
                         </ul>
@@ -69,9 +72,9 @@
                      <ul class="nav nav-tabs">
                         <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
                         <li class=""><a href="#routine" data-toggle="tab">Routine</a></li>
-                        <li class=""><a href="#examschedules" data-toggle="tab">Exam Schedules</a></li>
+                        <li class=""><a href="#examschedules" data-toggle="tab">Exam Schedule</a></li>
                         <li class=""><a href="#mark" data-toggle="tab">Mark</a></li>
-                        <li><a href="#document" data-toggle="tab">Document</a></li>
+                        <li><a href="#document" data-toggle="tab">Documents</a></li>
                      </ul>
                      <div class="tab-content">
                         <div class="tab-pane active" id="profile">

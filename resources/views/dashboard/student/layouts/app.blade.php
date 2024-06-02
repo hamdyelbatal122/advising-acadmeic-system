@@ -168,7 +168,7 @@
 
                   <li {{Request::is('*/routine') ? 'class=active' : ''}}><a href="{{route('student.courses.routine')}}"><i class="fa icon-routine"></i><span>Time Table</span> </a></li>
 
-                  <li {{Request::is('*/exams') ? 'class=active' : ''}}><a href="{{route('student.courses.exams')}}"><i class="fa fa-puzzle-piece"></i><span>Exam Schedules</span> </a></li>
+                  <li {{Request::is('*/exams') ? 'class=active' : ''}}><a href="{{route('student.courses.exams')}}"><i class="fa fa-puzzle-piece"></i><span>Exam Schedule</span> </a></li>
                  
                   <li {{Request::is('*/marks') ? 'class=active' : ''}}><a href="{{route('student.marks.index')}}"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                  

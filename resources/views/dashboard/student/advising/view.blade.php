@@ -72,6 +72,53 @@
             color: #0d3b66;
             font-size: 14px;
         }
+        .stamp {
+            position: absolute;
+            padding: 0.25rem 1rem;
+            text-transform: uppercase;
+            font-family: "Courier", monospace;
+            color: #555;
+            border: 0.25rem solid #555;
+            border-radius: 1rem;
+            -webkit-mask-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png");
+            -webkit-mask-size: 944px 604px;
+            mix-blend-mode: multiply;
+        }
+
+        .is-approved {
+        font-size: 3rem;
+        font-weight: 700;
+        top: 260px;
+        left: 960px;
+        position: absolute;
+        color: #0A9928;
+        border: 0.5rem solid #0A9928;
+        transform: rotate(0deg);
+        border-radius: 0;
+        }
+
+        .is-nope {
+        font-size: 3rem;
+        font-weight: 700;
+        top: 280px;
+        left: 810px;
+        color: #D23;
+        border: 0.5rem double #D23;
+        transform: rotate(0deg);
+        font-size: 2rem;  
+        }
+
+        .university {
+        font-size: 2rem;
+        font-weight: 700;
+        top: 160px;
+        left: 800px;
+        color: #4238d6;
+        transform: rotate(0deg);
+        /* writing-mode: vertical-rl; */
+        border: 0.5rem solid #4238d6;
+            
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 </head>
@@ -120,6 +167,11 @@
                 </table>
             </div>
         </div>
+        <span class="stamp university">{{env('APP_NAME')}}<b style="font-size:18px "> - {{$advising->created_at}}</b></span>
+        {{-- <span class="stamp is-approved">Approved</span> --}}
+        @if(Request::is('dashboard/academic/advising/*'))
+        <span class="stamp is-nope">Unofficial Document</span>
+        @endif
         <footer align="center">
             <p>Powered by {{env('APP_NAME')}}</p>
             <p class="signature-head">Manager's Signature</p>

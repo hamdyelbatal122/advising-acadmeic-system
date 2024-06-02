@@ -20,6 +20,7 @@
                   <div class="row">
                      <div class="col-sm-10">
                         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" id="add" >
+                           <input type="hidden" name="admin_id" value="{{auth('admin')->user()->id}}">
                            @csrf
                            <!-- First Name -->
                            <div class="form-group">

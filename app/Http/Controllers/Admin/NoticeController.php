@@ -66,9 +66,12 @@ class NoticeController extends Controller
         return view('dashboard.admin.notices.show', compact('notice'));
     }
 
-    public function reply(Request $request, $id)
+    public function reply($id)
     {
         $notice = Notice::where('status','active')->find($id);
+        if(!$notice){
+            return redirect()->route('admin.notices.show', $id);
+        }
         $student = $notice->student;
         return view('dashboard.admin.notices.reply', compact('notice', 'student'));
     }

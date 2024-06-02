@@ -50,6 +50,7 @@ class StudentsContoller extends Controller
             'college' => 'required',
             'level' => 'required',
             'gpa' => 'required|numeric',
+            'admin_id' => 'nullable',
 
         ]);
 

@@ -169,7 +169,7 @@
 
                   <li <?php echo e(Request::is('*/routine') ? 'class=active' : ''); ?>><a href="<?php echo e(route('student.courses.routine')); ?>"><i class="fa icon-routine"></i><span>Time Table</span> </a></li>
 
-                  <li <?php echo e(Request::is('*/exams') ? 'class=active' : ''); ?>><a href="<?php echo e(route('student.courses.exams')); ?>"><i class="fa fa-puzzle-piece"></i><span>Exam Schedules</span> </a></li>
+                  <li <?php echo e(Request::is('*/exams') ? 'class=active' : ''); ?>><a href="<?php echo e(route('student.courses.exams')); ?>"><i class="fa fa-puzzle-piece"></i><span>Exam Schedule</span> </a></li>
                  
                   <li <?php echo e(Request::is('*/marks') ? 'class=active' : ''); ?>><a href="<?php echo e(route('student.marks.index')); ?>"><i class=" fa fa-file-invoice"></i><span>Marks</span> </a></li>
                  
