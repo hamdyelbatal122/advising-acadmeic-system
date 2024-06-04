@@ -146,7 +146,7 @@
                                  <div class="profile-view-tab">
                                     <p><span>Currant Advising </span>: 
                                        @if($activeAdvising)
-                                       <a href="{{route('student.advising.print',$activeAdvising->id)}}"> 
+                                       <a href="{{route('admin.advising.print',$activeAdvising->id)}}"> 
                                        <button class="btn-cs btn-sm-cs">View </button>
                                        </a>
                                        @endif
