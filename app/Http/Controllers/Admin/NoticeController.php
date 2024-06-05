@@ -98,5 +98,12 @@ class NoticeController extends Controller
         return response()->json(['status'=>true,'message' => 'Message sent successfully', 'url' => route('admin.notices.reply', $notice->id)]);
     }
 
+    public function delete(Request $request)
+    {
+        $notice = Notice::findOrFail($request->id);
+        $notice->delete();
+        return response()->json(['status'=>true,'message' => 'Notice deleted successfully']);
+    }
+
 
 }
